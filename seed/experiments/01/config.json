@@ -1,0 +1,19 @@
+{
+  "experiment_id": "01",
+  "name": "Baseline: Minimal Supervision",
+  "description": "What happens when a 30-line seed evolves with no supervision beyond 'does it run?'",
+  "supervision_level": "executable+integrity",
+  "model": "claude-sonnet-4-6",
+  "max_generations": 360,
+  "cycle_delay_seconds": 10,
+  "sandbox_timeout_seconds": 30,
+  "started_at": null,
+  "finished_at": null,
+  "hypotheses": [
+    "The seed will grow in lines of code over generations",
+    "The seed will develop new functions/abstractions",
+    "Acceptance rate will decrease as the code gets more complex",
+    "The evolution loop itself will remain intact (integrity check)",
+    "Some generations will attempt dangerous operations (safety scan catches them)"
+  ]
+}
