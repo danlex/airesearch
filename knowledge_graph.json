@@ -1,0 +1,3450 @@
+{
+  "nodes": [
+    {
+      "id": "ai_researcher",
+      "type": "paper",
+      "label": "AI-Researcher: Automating Scientific Discovery",
+      "metadata": {
+        "group": "HKUDS",
+        "venue": "NeurIPS 2025",
+        "year": 2025,
+        "category": "core_systems"
+      }
+    },
+    {
+      "id": "typia_autobe",
+      "type": "paper",
+      "label": "Typia/AutoBe: Automated Backend Generation via Structured Output",
+      "metadata": {
+        "group": "Wrtn Technologies",
+        "year": 2025,
+        "category": "core_systems"
+      }
+    },
+    {
+      "id": "feynman",
+      "type": "paper",
+      "label": "Feynman: Autonomous AI Agent System",
+      "metadata": {
+        "group": "Companion AI",
+        "year": 2025,
+        "category": "core_systems"
+      }
+    },
+    {
+      "id": "2603.24533",
+      "type": "paper",
+      "label": "UI-Voyager: Autonomous UI Navigation Agent",
+      "metadata": {
+        "arxiv_id": "2603.24533",
+        "year": 2026,
+        "category": "core_systems"
+      }
+    },
+    {
+      "id": "2509.25370",
+      "type": "paper",
+      "label": "AgentDebug: Debugging Autonomous Agents",
+      "metadata": {
+        "arxiv_id": "2509.25370",
+        "year": 2025,
+        "category": "failure_self_correction"
+      }
+    },
+    {
+      "id": "2501.11425",
+      "type": "paper",
+      "label": "Agent-R: Training Language Model Agents to Reflect via Iterative Self-Training",
+      "metadata": {
+        "arxiv_id": "2501.11425",
+        "year": 2025,
+        "category": "failure_self_correction"
+      }
+    },
+    {
+      "id": "2512.20845",
+      "type": "paper",
+      "label": "MAR: Multi-Agent Reflexion for Collaborative Problem Solving",
+      "metadata": {
+        "arxiv_id": "2512.20845",
+        "year": 2025,
+        "category": "failure_self_correction"
+      }
+    },
+    {
+      "id": "2510.07841",
+      "type": "paper",
+      "label": "Self-Improving LLM Agents via Continuous Self-Refinement",
+      "metadata": {
+        "arxiv_id": "2510.07841",
+        "year": 2025,
+        "category": "failure_self_correction"
+      }
+    },
+    {
+      "id": "2511.13646",
+      "type": "paper",
+      "label": "Live-SWE-agent: Self-Evolving Software Engineering Agent",
+      "metadata": {
+        "arxiv_id": "2511.13646",
+        "year": 2025,
+        "category": "self_evolving"
+      }
+    },
+    {
+      "id": "2508.07407",
+      "type": "paper",
+      "label": "Self-Evolving AI Agents: A Comprehensive Survey",
+      "metadata": {
+        "arxiv_id": "2508.07407",
+        "year": 2025,
+        "category": "self_evolving"
+      }
+    },
+    {
+      "id": "2507.21046",
+      "type": "paper",
+      "label": "Self-Evolving Agents: A Survey on Autonomous Self-Improvement",
+      "metadata": {
+        "arxiv_id": "2507.21046",
+        "year": 2025,
+        "category": "self_evolving"
+      }
+    },
+    {
+      "id": "2602.16666",
+      "type": "paper",
+      "label": "The Science of AI Agent Reliability",
+      "metadata": {
+        "arxiv_id": "2602.16666",
+        "year": 2026,
+        "category": "reliability_verification"
+      }
+    },
+    {
+      "id": "2509.23864",
+      "type": "paper",
+      "label": "AgentGuard: Safeguarding Autonomous AI Agents",
+      "metadata": {
+        "arxiv_id": "2509.23864",
+        "year": 2025,
+        "category": "reliability_verification"
+      }
+    },
+    {
+      "id": "2507.08270",
+      "type": "paper",
+      "label": "Agent Safety via Reinforcement Learning",
+      "metadata": {
+        "arxiv_id": "2507.08270",
+        "year": 2025,
+        "category": "reliability_verification"
+      }
+    },
+    {
+      "id": "2512.20798",
+      "type": "paper",
+      "label": "Constraint Violations Benchmark for AI Agents",
+      "metadata": {
+        "arxiv_id": "2512.20798",
+        "year": 2025,
+        "category": "reliability_verification"
+      }
+    },
+    {
+      "id": "2505.19591",
+      "type": "paper",
+      "label": "Evolving Orchestration of Multi-Agent Systems",
+      "metadata": {
+        "arxiv_id": "2505.19591",
+        "year": 2025,
+        "category": "orchestration"
+      }
+    },
+    {
+      "id": "2509.11079",
+      "type": "paper",
+      "label": "DAAO: Dynamic Adaptive Agent Orchestration",
+      "metadata": {
+        "arxiv_id": "2509.11079",
+        "year": 2025,
+        "category": "orchestration"
+      }
+    },
+    {
+      "id": "2511.15755",
+      "type": "paper",
+      "label": "Incident Response Orchestration with Autonomous Agents",
+      "metadata": {
+        "arxiv_id": "2511.15755",
+        "year": 2025,
+        "category": "orchestration"
+      }
+    },
+    {
+      "id": "2210.03629",
+      "type": "paper",
+      "label": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "metadata": {
+        "arxiv_id": "2210.03629",
+        "year": 2022,
+        "category": "architectures"
+      }
+    },
+    {
+      "id": "2305.10601",
+      "type": "paper",
+      "label": "Tree of Thoughts: Deliberate Problem Solving with LLMs",
+      "metadata": {
+        "arxiv_id": "2305.10601",
+        "year": 2023,
+        "category": "architectures"
+      }
+    },
+    {
+      "id": "2303.11366",
+      "type": "paper",
+      "label": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "metadata": {
+        "arxiv_id": "2303.11366",
+        "year": 2023,
+        "category": "architectures"
+      }
+    },
+    {
+      "id": "2310.04406",
+      "type": "paper",
+      "label": "LATS: Language Agent Tree Search",
+      "metadata": {
+        "arxiv_id": "2310.04406",
+        "year": 2023,
+        "category": "architectures"
+      }
+    },
+    {
+      "id": "2309.02427",
+      "type": "paper",
+      "label": "CoALA: Cognitive Architectures for Language Agents",
+      "metadata": {
+        "arxiv_id": "2309.02427",
+        "year": 2023,
+        "category": "architectures"
+      }
+    },
+    {
+      "id": "2310.00194",
+      "type": "paper",
+      "label": "MAP: Multi-Agent Planning for LLM Agents",
+      "metadata": {
+        "arxiv_id": "2310.00194",
+        "year": 2023,
+        "category": "architectures"
+      }
+    },
+    {
+      "id": "2310.06770",
+      "type": "paper",
+      "label": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "metadata": {
+        "arxiv_id": "2310.06770",
+        "year": 2023,
+        "category": "coding_agents"
+      }
+    },
+    {
+      "id": "2405.15793",
+      "type": "paper",
+      "label": "SWE-agent: Agent-Computer Interfaces for Software Engineering",
+      "metadata": {
+        "arxiv_id": "2405.15793",
+        "year": 2024,
+        "category": "coding_agents"
+      }
+    },
+    {
+      "id": "2407.16741",
+      "type": "paper",
+      "label": "OpenHands: An Open Platform for AI Software Developers",
+      "metadata": {
+        "arxiv_id": "2407.16741",
+        "year": 2024,
+        "category": "coding_agents"
+      }
+    },
+    {
+      "id": "2407.01489",
+      "type": "paper",
+      "label": "Agentless: Demystifying LLM-based Software Engineering Agents",
+      "metadata": {
+        "arxiv_id": "2407.01489",
+        "year": 2024,
+        "category": "coding_agents"
+      }
+    },
+    {
+      "id": "2405.11403",
+      "type": "paper",
+      "label": "MapCoder: Multi-Agent Code Generation through Planning",
+      "metadata": {
+        "arxiv_id": "2405.11403",
+        "year": 2024,
+        "category": "coding_agents"
+      }
+    },
+    {
+      "id": "2307.07924",
+      "type": "paper",
+      "label": "ChatDev: Communicative Agents for Software Development",
+      "metadata": {
+        "arxiv_id": "2307.07924",
+        "year": 2023,
+        "category": "coding_agents"
+      }
+    },
+    {
+      "id": "2308.00352",
+      "type": "paper",
+      "label": "MetaGPT: Meta Programming for Multi-Agent Collaboration",
+      "metadata": {
+        "arxiv_id": "2308.00352",
+        "year": 2023,
+        "category": "coding_agents"
+      }
+    },
+    {
+      "id": "2509.16941",
+      "type": "paper",
+      "label": "SWE-Bench Pro: Advanced Software Engineering Benchmark",
+      "metadata": {
+        "arxiv_id": "2509.16941",
+        "year": 2025,
+        "category": "coding_agents"
+      }
+    },
+    {
+      "id": "2307.13854",
+      "type": "paper",
+      "label": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+      "metadata": {
+        "arxiv_id": "2307.13854",
+        "year": 2023,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2401.13649",
+      "type": "paper",
+      "label": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks",
+      "metadata": {
+        "arxiv_id": "2401.13649",
+        "year": 2024,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2306.06070",
+      "type": "paper",
+      "label": "Mind2Web: Towards a Generalist Agent for the Web",
+      "metadata": {
+        "arxiv_id": "2306.06070",
+        "year": 2023,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2404.07972",
+      "type": "paper",
+      "label": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments",
+      "metadata": {
+        "arxiv_id": "2404.07972",
+        "year": 2024,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2312.08914",
+      "type": "paper",
+      "label": "CogAgent: A Visual Language Model for GUI Agents",
+      "metadata": {
+        "arxiv_id": "2312.08914",
+        "year": 2023,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2411.17465",
+      "type": "paper",
+      "label": "ShowUI: Vision-Language-Action Model for GUI Visual Agent",
+      "metadata": {
+        "arxiv_id": "2411.17465",
+        "year": 2024,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2411.10323",
+      "type": "paper",
+      "label": "Claude Computer Use: Empirical Study of Anthropic's Computer Use Agent",
+      "metadata": {
+        "arxiv_id": "2411.10323",
+        "year": 2024,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2403.07718",
+      "type": "paper",
+      "label": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
+      "metadata": {
+        "arxiv_id": "2403.07718",
+        "year": 2024,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2412.09605",
+      "type": "paper",
+      "label": "AgentTrek: Agent Trajectory Synthesis via Guiding Replay with Web Tutorials",
+      "metadata": {
+        "arxiv_id": "2412.09605",
+        "year": 2024,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2508.09123",
+      "type": "paper",
+      "label": "OpenCUA: Open Computer-Use Agent Framework",
+      "metadata": {
+        "arxiv_id": "2508.09123",
+        "year": 2025,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2312.13771",
+      "type": "paper",
+      "label": "AppAgent: Multimodal Agents as Smartphone Users",
+      "metadata": {
+        "arxiv_id": "2312.13771",
+        "year": 2023,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2506.01952",
+      "type": "paper",
+      "label": "WebChoreArena: Evaluating Web Agents on Routine Household Tasks",
+      "metadata": {
+        "arxiv_id": "2506.01952",
+        "year": 2025,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2511.09157",
+      "type": "paper",
+      "label": "ProBench: Benchmarking Professional-Level AI Agent Tasks",
+      "metadata": {
+        "arxiv_id": "2511.09157",
+        "year": 2025,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2603.25226",
+      "type": "paper",
+      "label": "WebTestBench: Web Testing Benchmark for Autonomous Agents",
+      "metadata": {
+        "arxiv_id": "2603.25226",
+        "year": 2026,
+        "category": "web_gui_agents"
+      }
+    },
+    {
+      "id": "2408.06292",
+      "type": "paper",
+      "label": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery",
+      "metadata": {
+        "arxiv_id": "2408.06292",
+        "year": 2024,
+        "category": "scientific_agents"
+      }
+    },
+    {
+      "id": "2504.08066",
+      "type": "paper",
+      "label": "The AI Scientist v2: Workshop-Level Automated Scientific Discovery",
+      "metadata": {
+        "arxiv_id": "2504.08066",
+        "year": 2025,
+        "category": "scientific_agents"
+      }
+    },
+    {
+      "id": "2304.05332",
+      "type": "paper",
+      "label": "Coscientist: Autonomous Chemical Research with LLMs",
+      "metadata": {
+        "arxiv_id": "2304.05332",
+        "year": 2023,
+        "category": "scientific_agents"
+      }
+    },
+    {
+      "id": "2501.04227",
+      "type": "paper",
+      "label": "Agent Laboratory: Using LLM Agents as Research Assistants",
+      "metadata": {
+        "arxiv_id": "2501.04227",
+        "year": 2025,
+        "category": "scientific_agents"
+      }
+    },
+    {
+      "id": "2503.18102",
+      "type": "paper",
+      "label": "AgentRxiv: Towards Collaborative Autonomous Research",
+      "metadata": {
+        "arxiv_id": "2503.18102",
+        "year": 2025,
+        "category": "scientific_agents"
+      }
+    },
+    {
+      "id": "2302.04761",
+      "type": "paper",
+      "label": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+      "metadata": {
+        "arxiv_id": "2302.04761",
+        "year": 2023,
+        "category": "tool_use"
+      }
+    },
+    {
+      "id": "2307.16789",
+      "type": "paper",
+      "label": "ToolLLM: Facilitating LLMs to Master 16000+ Real-World APIs",
+      "metadata": {
+        "arxiv_id": "2307.16789",
+        "year": 2023,
+        "category": "tool_use"
+      }
+    },
+    {
+      "id": "2305.15334",
+      "type": "paper",
+      "label": "Gorilla: Large Language Model Connected with Massive APIs",
+      "metadata": {
+        "arxiv_id": "2305.15334",
+        "year": 2023,
+        "category": "tool_use"
+      }
+    },
+    {
+      "id": "2303.17580",
+      "type": "paper",
+      "label": "HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face",
+      "metadata": {
+        "arxiv_id": "2303.17580",
+        "year": 2023,
+        "category": "tool_use"
+      }
+    },
+    {
+      "id": "2305.14318",
+      "type": "paper",
+      "label": "CREATOR: Tool Creation for Disentangling Abstraction and Reasoning",
+      "metadata": {
+        "arxiv_id": "2305.14318",
+        "year": 2023,
+        "category": "tool_use"
+      }
+    },
+    {
+      "id": "2409.00920",
+      "type": "paper",
+      "label": "ToolACE: Winning the Points of LLM Function Calling",
+      "metadata": {
+        "arxiv_id": "2409.00920",
+        "year": 2024,
+        "category": "tool_use"
+      }
+    },
+    {
+      "id": "2512.24565",
+      "type": "paper",
+      "label": "MCPAgentBench: Benchmarking Model Context Protocol Agent Interactions",
+      "metadata": {
+        "arxiv_id": "2512.24565",
+        "year": 2025,
+        "category": "tool_use"
+      }
+    },
+    {
+      "id": "2308.08155",
+      "type": "paper",
+      "label": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+      "metadata": {
+        "arxiv_id": "2308.08155",
+        "year": 2023,
+        "category": "multi_agent"
+      }
+    },
+    {
+      "id": "2305.14325",
+      "type": "paper",
+      "label": "Improving Factuality and Reasoning via Multiagent Debate",
+      "metadata": {
+        "arxiv_id": "2305.14325",
+        "year": 2023,
+        "category": "multi_agent"
+      }
+    },
+    {
+      "id": "2304.03442",
+      "type": "paper",
+      "label": "Generative Agents: Interactive Simulacra of Human Behavior",
+      "metadata": {
+        "arxiv_id": "2304.03442",
+        "year": 2023,
+        "category": "multi_agent"
+      }
+    },
+    {
+      "id": "2310.08560",
+      "type": "paper",
+      "label": "MemGPT: Towards LLMs as Operating Systems",
+      "metadata": {
+        "arxiv_id": "2310.08560",
+        "year": 2023,
+        "category": "memory"
+      }
+    },
+    {
+      "id": "2504.19413",
+      "type": "paper",
+      "label": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+      "metadata": {
+        "arxiv_id": "2504.19413",
+        "year": 2025,
+        "category": "memory"
+      }
+    },
+    {
+      "id": "2502.12110",
+      "type": "paper",
+      "label": "A-MEM: Agentic Memory for LLM Agents",
+      "metadata": {
+        "arxiv_id": "2502.12110",
+        "year": 2025,
+        "category": "memory"
+      }
+    },
+    {
+      "id": "2308.03688",
+      "type": "paper",
+      "label": "AgentBench: Evaluating LLMs as Agents",
+      "metadata": {
+        "arxiv_id": "2308.03688",
+        "year": 2023,
+        "category": "benchmarks"
+      }
+    },
+    {
+      "id": "2311.12983",
+      "type": "paper",
+      "label": "GAIA: A Benchmark for General AI Assistants",
+      "metadata": {
+        "arxiv_id": "2311.12983",
+        "year": 2023,
+        "category": "benchmarks"
+      }
+    },
+    {
+      "id": "2401.13178",
+      "type": "paper",
+      "label": "AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents",
+      "metadata": {
+        "arxiv_id": "2401.13178",
+        "year": 2024,
+        "category": "benchmarks"
+      }
+    },
+    {
+      "id": "2412.14161",
+      "type": "paper",
+      "label": "TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks",
+      "metadata": {
+        "arxiv_id": "2412.14161",
+        "year": 2024,
+        "category": "benchmarks"
+      }
+    },
+    {
+      "id": "2412.14470",
+      "type": "paper",
+      "label": "Agent-SafetyBench: Evaluating the Safety of LLM Agents",
+      "metadata": {
+        "arxiv_id": "2412.14470",
+        "year": 2024,
+        "category": "benchmarks"
+      }
+    },
+    {
+      "id": "2402.04249",
+      "type": "paper",
+      "label": "HarmBench: A Standardized Evaluation Framework for Automated Red Teaming",
+      "metadata": {
+        "arxiv_id": "2402.04249",
+        "year": 2024,
+        "category": "benchmarks"
+      }
+    },
+    {
+      "id": "2305.16291",
+      "type": "paper",
+      "label": "Voyager: An Open-Ended Embodied Agent with LLMs",
+      "metadata": {
+        "arxiv_id": "2305.16291",
+        "year": 2023,
+        "category": "domain_specific"
+      }
+    },
+    {
+      "id": "2307.15818",
+      "type": "paper",
+      "label": "RT-2: Vision-Language-Action Models for Robotic Control",
+      "metadata": {
+        "arxiv_id": "2307.15818",
+        "year": 2023,
+        "category": "domain_specific"
+      }
+    },
+    {
+      "id": "2311.10537",
+      "type": "paper",
+      "label": "MedAgents: Large Language Models as Collaborators for Zero-shot Medical Reasoning",
+      "metadata": {
+        "arxiv_id": "2311.10537",
+        "year": 2023,
+        "category": "domain_specific"
+      }
+    },
+    {
+      "id": "2404.15155",
+      "type": "paper",
+      "label": "MDAgents: An Adaptive Collaboration of LLMs for Medical Decision-Making",
+      "metadata": {
+        "arxiv_id": "2404.15155",
+        "year": 2024,
+        "category": "domain_specific"
+      }
+    },
+    {
+      "id": "2402.18485",
+      "type": "paper",
+      "label": "FinAgent: A Multimodal Foundation Agent for Financial Trading",
+      "metadata": {
+        "arxiv_id": "2402.18485",
+        "year": 2024,
+        "category": "domain_specific"
+      }
+    },
+    {
+      "id": "2407.06567",
+      "type": "paper",
+      "label": "FinCon: A Synthesized LLM Multi-Agent System for Financial Decision Making",
+      "metadata": {
+        "arxiv_id": "2407.06567",
+        "year": 2024,
+        "category": "domain_specific"
+      }
+    },
+    {
+      "id": "2412.20138",
+      "type": "paper",
+      "label": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "metadata": {
+        "arxiv_id": "2412.20138",
+        "year": 2024,
+        "category": "domain_specific"
+      }
+    },
+    {
+      "id": "2308.11432",
+      "type": "paper",
+      "label": "A Survey on Large Language Model based Autonomous Agents (Wang et al.)",
+      "metadata": {
+        "arxiv_id": "2308.11432",
+        "year": 2023,
+        "category": "surveys"
+      }
+    },
+    {
+      "id": "2309.07864",
+      "type": "paper",
+      "label": "The Rise and Potential of Large Language Model Based Agents: A Survey (Xi et al.)",
+      "metadata": {
+        "arxiv_id": "2309.07864",
+        "year": 2023,
+        "category": "surveys"
+      }
+    },
+    {
+      "id": "feedback_loops",
+      "type": "concept",
+      "label": "Feedback Loops",
+      "metadata": {
+        "description": "Iterative cycles where agent outputs inform subsequent actions, enabling continuous improvement and adaptation."
+      }
+    },
+    {
+      "id": "self_correction",
+      "type": "concept",
+      "label": "Self-Correction",
+      "metadata": {
+        "description": "Ability of agents to detect and fix their own errors during or after task execution."
+      }
+    },
+    {
+      "id": "self_evolution",
+      "type": "concept",
+      "label": "Self-Evolution",
+      "metadata": {
+        "description": "Agents that autonomously improve their capabilities over time through experience and self-modification."
+      }
+    },
+    {
+      "id": "multi_agent_orchestration",
+      "type": "concept",
+      "label": "Multi-Agent Orchestration",
+      "metadata": {
+        "description": "Coordination and management of multiple AI agents working together on complex tasks."
+      }
+    },
+    {
+      "id": "tool_use_concept",
+      "type": "concept",
+      "label": "Tool Use",
+      "metadata": {
+        "description": "Ability of LLM agents to learn, select, and utilize external tools and APIs to extend their capabilities."
+      }
+    },
+    {
+      "id": "memory_systems",
+      "type": "concept",
+      "label": "Memory Systems",
+      "metadata": {
+        "description": "Mechanisms for agents to store, retrieve, and manage information across interactions and sessions."
+      }
+    },
+    {
+      "id": "agent_safety",
+      "type": "concept",
+      "label": "Agent Safety",
+      "metadata": {
+        "description": "Ensuring AI agents operate within safe boundaries and do not cause unintended harm."
+      }
+    },
+    {
+      "id": "structured_output",
+      "type": "concept",
+      "label": "Structured Output",
+      "metadata": {
+        "description": "Generating well-formed, schema-compliant outputs from LLMs for reliable downstream processing."
+      }
+    },
+    {
+      "id": "fork_point_detection",
+      "type": "concept",
+      "label": "Fork Point Detection",
+      "metadata": {
+        "description": "Identifying critical decision points in agent trajectories where errors originate or diverge."
+      }
+    },
+    {
+      "id": "verification_oracle",
+      "type": "concept",
+      "label": "Verification Oracle",
+      "metadata": {
+        "description": "An authoritative mechanism for verifying the correctness of agent actions and outputs."
+      }
+    },
+    {
+      "id": "error_localization",
+      "type": "concept",
+      "label": "Error Localization",
+      "metadata": {
+        "description": "Techniques for identifying the precise location and cause of errors in agent execution traces."
+      }
+    },
+    {
+      "id": "chain_of_thought",
+      "type": "concept",
+      "label": "Chain of Thought",
+      "metadata": {
+        "description": "Prompting technique where models generate intermediate reasoning steps before final answers."
+      }
+    },
+    {
+      "id": "reinforcement_learning",
+      "type": "concept",
+      "label": "Reinforcement Learning",
+      "metadata": {
+        "description": "Learning paradigm where agents improve through reward signals from environment interactions."
+      }
+    },
+    {
+      "id": "monte_carlo_tree_search",
+      "type": "concept",
+      "label": "Monte Carlo Tree Search",
+      "metadata": {
+        "description": "Search algorithm that uses random sampling to explore decision trees for optimal action selection."
+      }
+    },
+    {
+      "id": "compiler_validation",
+      "type": "concept",
+      "label": "Compiler Validation",
+      "metadata": {
+        "description": "Using compiler-based checks to validate generated code and structured outputs."
+      }
+    },
+    {
+      "id": "adversarial_review",
+      "type": "concept",
+      "label": "Adversarial Review",
+      "metadata": {
+        "description": "Using adversarial agents to critique and improve other agents' outputs."
+      }
+    },
+    {
+      "id": "source_grounding",
+      "type": "concept",
+      "label": "Source Grounding",
+      "metadata": {
+        "description": "Anchoring agent outputs to verified source material to reduce hallucination."
+      }
+    },
+    {
+      "id": "runtime_verification",
+      "type": "concept",
+      "label": "Runtime Verification",
+      "metadata": {
+        "description": "Monitoring and verifying agent behavior during execution to ensure correctness and safety."
+      }
+    },
+    {
+      "id": "rejection_fine_tuning",
+      "type": "technique",
+      "label": "Rejection Fine-Tuning",
+      "metadata": {
+        "description": "Training technique that filters generated samples by quality before fine-tuning on accepted outputs."
+      }
+    },
+    {
+      "id": "group_relative_self_distillation",
+      "type": "technique",
+      "label": "Group Relative Self-Distillation",
+      "metadata": {
+        "description": "Training approach where model distills knowledge from grouped relative comparisons of its own outputs."
+      }
+    },
+    {
+      "id": "schema_constraint",
+      "type": "technique",
+      "label": "Schema Constraint",
+      "metadata": {
+        "description": "Enforcing output structure through schema definitions (JSON Schema, TypeScript types, etc.)."
+      }
+    },
+    {
+      "id": "lenient_parsing",
+      "type": "technique",
+      "label": "Lenient Parsing",
+      "metadata": {
+        "description": "Flexible parsing strategies that tolerate minor formatting errors in LLM outputs."
+      }
+    },
+    {
+      "id": "validation_feedback",
+      "type": "technique",
+      "label": "Validation Feedback",
+      "metadata": {
+        "description": "Providing validation error messages back to models for iterative output correction."
+      }
+    },
+    {
+      "id": "atomic_definition_tracing",
+      "type": "technique",
+      "label": "Atomic Definition Tracing",
+      "metadata": {
+        "description": "Tracing type definitions to their atomic components for complete validation."
+      }
+    },
+    {
+      "id": "SSIM_matching",
+      "type": "technique",
+      "label": "SSIM Matching",
+      "metadata": {
+        "description": "Structural Similarity Index Measure used for comparing visual elements in UI testing."
+      }
+    },
+    {
+      "id": "reflexion_technique",
+      "type": "technique",
+      "label": "Reflexion",
+      "metadata": {
+        "description": "Verbal self-reflection technique enabling agents to learn from failed attempts."
+      }
+    },
+    {
+      "id": "react_paradigm",
+      "type": "technique",
+      "label": "ReAct Paradigm",
+      "metadata": {
+        "description": "Interleaving reasoning traces and task-specific actions in LLM prompting."
+      }
+    },
+    {
+      "id": "tree_search",
+      "type": "technique",
+      "label": "Tree Search",
+      "metadata": {
+        "description": "Systematic exploration of action spaces using tree-structured search algorithms."
+      }
+    },
+    {
+      "id": "system_swe_agent",
+      "type": "system",
+      "label": "SWE-agent System",
+      "metadata": {
+        "description": "Agent-computer interface system designed for autonomous software engineering."
+      }
+    },
+    {
+      "id": "system_openhands",
+      "type": "system",
+      "label": "OpenHands Platform",
+      "metadata": {
+        "description": "Open-source platform for building AI-powered software development agents."
+      }
+    },
+    {
+      "id": "system_autogen",
+      "type": "system",
+      "label": "AutoGen Framework",
+      "metadata": {
+        "description": "Microsoft's multi-agent conversation framework for building LLM applications."
+      }
+    },
+    {
+      "id": "system_chatdev",
+      "type": "system",
+      "label": "ChatDev System",
+      "metadata": {
+        "description": "Virtual software company powered by communicative LLM agents."
+      }
+    },
+    {
+      "id": "system_metagpt",
+      "type": "system",
+      "label": "MetaGPT System",
+      "metadata": {
+        "description": "Multi-agent framework encoding SOPs for collaborative software development."
+      }
+    },
+    {
+      "id": "bench_swebench",
+      "type": "benchmark",
+      "label": "SWE-bench",
+      "metadata": {
+        "description": "Benchmark for evaluating LLMs on real-world GitHub issue resolution."
+      }
+    },
+    {
+      "id": "bench_webarena",
+      "type": "benchmark",
+      "label": "WebArena",
+      "metadata": {
+        "description": "Realistic web environment benchmark for autonomous web agent evaluation."
+      }
+    },
+    {
+      "id": "bench_agentbench",
+      "type": "benchmark",
+      "label": "AgentBench",
+      "metadata": {
+        "description": "Comprehensive benchmark for evaluating LLMs as autonomous agents."
+      }
+    },
+    {
+      "id": "bench_gaia",
+      "type": "benchmark",
+      "label": "GAIA",
+      "metadata": {
+        "description": "Benchmark for general AI assistant capabilities requiring multi-step reasoning."
+      }
+    },
+    {
+      "id": "bench_osworld",
+      "type": "benchmark",
+      "label": "OSWorld",
+      "metadata": {
+        "description": "Benchmark for multimodal agents in real computer OS environments."
+      }
+    },
+    {
+      "id": "rg_hkuds",
+      "type": "research_group",
+      "label": "HKUDS (HKU Data Science Lab)",
+      "metadata": {
+        "description": "Research group at the University of Hong Kong focusing on data science and AI."
+      }
+    },
+    {
+      "id": "rg_wrtn",
+      "type": "research_group",
+      "label": "Wrtn Technologies",
+      "metadata": {
+        "description": "Korean AI company developing structured output and agent technologies."
+      }
+    },
+    {
+      "id": "rg_companion",
+      "type": "research_group",
+      "label": "Companion AI",
+      "metadata": {
+        "description": "AI research company developing the Feynman autonomous agent system."
+      }
+    },
+    {
+      "id": "rg_princeton",
+      "type": "research_group",
+      "label": "Princeton NLP",
+      "metadata": {
+        "description": "Princeton University NLP group, creators of SWE-bench and SWE-agent."
+      }
+    },
+    {
+      "id": "rg_microsoft",
+      "type": "research_group",
+      "label": "Microsoft Research",
+      "metadata": {
+        "description": "Microsoft's research division, creators of AutoGen framework."
+      }
+    },
+    {
+      "id": "rg_stanford",
+      "type": "research_group",
+      "label": "Stanford NLP",
+      "metadata": {
+        "description": "Stanford University NLP group contributing to agent architectures and benchmarks."
+      }
+    },
+    {
+      "id": "rg_anthropic",
+      "type": "research_group",
+      "label": "Anthropic",
+      "metadata": {
+        "description": "AI safety company developing Claude and computer use capabilities."
+      }
+    },
+    {
+      "id": "rg_deepmind",
+      "type": "research_group",
+      "label": "Google DeepMind",
+      "metadata": {
+        "description": "Google's AI research lab, creators of RT-2 and contributors to agent research."
+      }
+    },
+    {
+      "id": "venue_neurips",
+      "type": "venue",
+      "label": "NeurIPS",
+      "metadata": {
+        "description": "Conference on Neural Information Processing Systems."
+      }
+    },
+    {
+      "id": "venue_icml",
+      "type": "venue",
+      "label": "ICML",
+      "metadata": {
+        "description": "International Conference on Machine Learning."
+      }
+    },
+    {
+      "id": "venue_iclr",
+      "type": "venue",
+      "label": "ICLR",
+      "metadata": {
+        "description": "International Conference on Learning Representations."
+      }
+    },
+    {
+      "id": "venue_arxiv",
+      "type": "venue",
+      "label": "arXiv",
+      "metadata": {
+        "description": "Open-access preprint repository."
+      }
+    },
+    {
+      "id": "venue_acl",
+      "type": "venue",
+      "label": "ACL",
+      "metadata": {
+        "description": "Annual Meeting of the Association for Computational Linguistics."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "2210.03629",
+      "target": "react_paradigm",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2303.11366",
+      "target": "reflexion_technique",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2305.10601",
+      "target": "tree_search",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2310.04406",
+      "target": "monte_carlo_tree_search",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2310.04406",
+      "target": "tree_search",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2310.04406",
+      "target": "2305.10601",
+      "relationship": "extends"
+    },
+    {
+      "source": "2310.04406",
+      "target": "2303.11366",
+      "relationship": "extends"
+    },
+    {
+      "source": "2310.04406",
+      "target": "2210.03629",
+      "relationship": "extends"
+    },
+    {
+      "source": "2309.02427",
+      "target": "memory_systems",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2309.02427",
+      "target": "tool_use_concept",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2309.02427",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2310.00194",
+      "target": "multi_agent_orchestration",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2310.00194",
+      "target": "2308.08155",
+      "relationship": "related_to"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "rg_hkuds",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "venue_neurips",
+      "relationship": "published_at"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "adversarial_review",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "2408.06292",
+      "relationship": "extends"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "source_grounding",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "2501.04227",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "typia_autobe",
+      "target": "rg_wrtn",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "typia_autobe",
+      "target": "structured_output",
+      "relationship": "introduces"
+    },
+    {
+      "source": "typia_autobe",
+      "target": "schema_constraint",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "typia_autobe",
+      "target": "compiler_validation",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "typia_autobe",
+      "target": "lenient_parsing",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "typia_autobe",
+      "target": "validation_feedback",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "typia_autobe",
+      "target": "atomic_definition_tracing",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "feynman",
+      "target": "rg_companion",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "feynman",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "feynman",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "feynman",
+      "target": "tool_use_concept",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "feynman",
+      "target": "memory_systems",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2603.24533",
+      "target": "SSIM_matching",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2603.24533",
+      "target": "2404.07972",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2603.24533",
+      "target": "2312.08914",
+      "relationship": "extends"
+    },
+    {
+      "source": "2603.24533",
+      "target": "2411.17465",
+      "relationship": "extends"
+    },
+    {
+      "source": "2603.24533",
+      "target": "2305.16291",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2603.24533",
+      "target": "self_correction",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2509.25370",
+      "target": "error_localization",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2509.25370",
+      "target": "fork_point_detection",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2509.25370",
+      "target": "self_correction",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2509.25370",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2509.25370",
+      "target": "2303.11366",
+      "relationship": "extends"
+    },
+    {
+      "source": "2501.11425",
+      "target": "self_correction",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2501.11425",
+      "target": "reflexion_technique",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.11425",
+      "target": "rejection_fine_tuning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.11425",
+      "target": "2303.11366",
+      "relationship": "extends"
+    },
+    {
+      "source": "2501.11425",
+      "target": "fork_point_detection",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.11425",
+      "target": "2307.13854",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2512.20845",
+      "target": "reflexion_technique",
+      "relationship": "extends"
+    },
+    {
+      "source": "2512.20845",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2512.20845",
+      "target": "self_correction",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2512.20845",
+      "target": "2303.11366",
+      "relationship": "extends"
+    },
+    {
+      "source": "2512.20845",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2512.20845",
+      "target": "2305.14325",
+      "relationship": "extends"
+    },
+    {
+      "source": "2510.07841",
+      "target": "self_evolution",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2510.07841",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2510.07841",
+      "target": "self_correction",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2510.07841",
+      "target": "reinforcement_learning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2510.07841",
+      "target": "2303.11366",
+      "relationship": "cites"
+    },
+    {
+      "source": "2511.13646",
+      "target": "self_evolution",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2511.13646",
+      "target": "2405.15793",
+      "relationship": "extends"
+    },
+    {
+      "source": "2511.13646",
+      "target": "2310.06770",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2511.13646",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2511.13646",
+      "target": "self_correction",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2508.07407",
+      "target": "self_evolution",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2508.07407",
+      "target": "2511.13646",
+      "relationship": "cites"
+    },
+    {
+      "source": "2508.07407",
+      "target": "2510.07841",
+      "relationship": "cites"
+    },
+    {
+      "source": "2508.07407",
+      "target": "feedback_loops",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2508.07407",
+      "target": "memory_systems",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2508.07407",
+      "target": "2507.21046",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2507.21046",
+      "target": "self_evolution",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2507.21046",
+      "target": "2511.13646",
+      "relationship": "cites"
+    },
+    {
+      "source": "2507.21046",
+      "target": "2510.07841",
+      "relationship": "cites"
+    },
+    {
+      "source": "2507.21046",
+      "target": "reinforcement_learning",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2507.21046",
+      "target": "2308.11432",
+      "relationship": "cites"
+    },
+    {
+      "source": "2602.16666",
+      "target": "agent_safety",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2602.16666",
+      "target": "runtime_verification",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2602.16666",
+      "target": "verification_oracle",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2602.16666",
+      "target": "2509.23864",
+      "relationship": "cites"
+    },
+    {
+      "source": "2602.16666",
+      "target": "2412.14470",
+      "relationship": "cites"
+    },
+    {
+      "source": "2602.16666",
+      "target": "2512.20798",
+      "relationship": "cites"
+    },
+    {
+      "source": "2509.23864",
+      "target": "agent_safety",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2509.23864",
+      "target": "runtime_verification",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2509.23864",
+      "target": "2402.04249",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2509.23864",
+      "target": "2412.14470",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2507.08270",
+      "target": "agent_safety",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2507.08270",
+      "target": "reinforcement_learning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2507.08270",
+      "target": "2509.23864",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2507.08270",
+      "target": "2402.04249",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2512.20798",
+      "target": "agent_safety",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2512.20798",
+      "target": "2412.14470",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2512.20798",
+      "target": "runtime_verification",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2505.19591",
+      "target": "multi_agent_orchestration",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2505.19591",
+      "target": "self_evolution",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2505.19591",
+      "target": "2308.08155",
+      "relationship": "extends"
+    },
+    {
+      "source": "2505.19591",
+      "target": "2509.11079",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2505.19591",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2509.11079",
+      "target": "multi_agent_orchestration",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2509.11079",
+      "target": "2308.08155",
+      "relationship": "extends"
+    },
+    {
+      "source": "2509.11079",
+      "target": "2505.19591",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2509.11079",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2511.15755",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2511.15755",
+      "target": "2308.08155",
+      "relationship": "cites"
+    },
+    {
+      "source": "2511.15755",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2511.15755",
+      "target": "2509.11079",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2405.15793",
+      "target": "rg_princeton",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "2405.15793",
+      "target": "2310.06770",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2405.15793",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2405.15793",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2405.15793",
+      "target": "system_swe_agent",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2310.06770",
+      "target": "rg_princeton",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "2310.06770",
+      "target": "bench_swebench",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2407.16741",
+      "target": "system_openhands",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2407.16741",
+      "target": "2310.06770",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2407.16741",
+      "target": "2405.15793",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2407.16741",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2407.16741",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2407.01489",
+      "target": "2310.06770",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2407.01489",
+      "target": "2405.15793",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2407.01489",
+      "target": "2407.16741",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2405.11403",
+      "target": "2310.06770",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2405.11403",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2405.11403",
+      "target": "2310.00194",
+      "relationship": "extends"
+    },
+    {
+      "source": "2405.11403",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2307.07924",
+      "target": "system_chatdev",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2307.07924",
+      "target": "multi_agent_orchestration",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2307.07924",
+      "target": "2308.08155",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2308.00352",
+      "target": "system_metagpt",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2308.00352",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2308.00352",
+      "target": "2307.07924",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2308.00352",
+      "target": "structured_output",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2509.16941",
+      "target": "2310.06770",
+      "relationship": "extends"
+    },
+    {
+      "source": "2509.16941",
+      "target": "bench_swebench",
+      "relationship": "extends"
+    },
+    {
+      "source": "2509.16941",
+      "target": "2405.15793",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2509.16941",
+      "target": "2407.16741",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2307.13854",
+      "target": "bench_webarena",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2307.13854",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2401.13649",
+      "target": "2307.13854",
+      "relationship": "extends"
+    },
+    {
+      "source": "2401.13649",
+      "target": "bench_webarena",
+      "relationship": "extends"
+    },
+    {
+      "source": "2306.06070",
+      "target": "2307.13854",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2306.06070",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2404.07972",
+      "target": "bench_osworld",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2404.07972",
+      "target": "2307.13854",
+      "relationship": "extends"
+    },
+    {
+      "source": "2404.07972",
+      "target": "2306.06070",
+      "relationship": "cites"
+    },
+    {
+      "source": "2312.08914",
+      "target": "2306.06070",
+      "relationship": "cites"
+    },
+    {
+      "source": "2312.08914",
+      "target": "2307.13854",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2312.08914",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2411.17465",
+      "target": "2312.08914",
+      "relationship": "extends"
+    },
+    {
+      "source": "2411.17465",
+      "target": "2404.07972",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2411.17465",
+      "target": "2307.13854",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2411.17465",
+      "target": "SSIM_matching",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2411.10323",
+      "target": "rg_anthropic",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "2411.10323",
+      "target": "2404.07972",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2411.10323",
+      "target": "2307.13854",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2411.10323",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2411.10323",
+      "target": "2312.08914",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2403.07718",
+      "target": "2307.13854",
+      "relationship": "extends"
+    },
+    {
+      "source": "2403.07718",
+      "target": "bench_webarena",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2403.07718",
+      "target": "2412.14161",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2412.09605",
+      "target": "2307.13854",
+      "relationship": "cites"
+    },
+    {
+      "source": "2412.09605",
+      "target": "2306.06070",
+      "relationship": "cites"
+    },
+    {
+      "source": "2412.09605",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2508.09123",
+      "target": "2411.10323",
+      "relationship": "extends"
+    },
+    {
+      "source": "2508.09123",
+      "target": "2404.07972",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2508.09123",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2508.09123",
+      "target": "2312.08914",
+      "relationship": "cites"
+    },
+    {
+      "source": "2312.13771",
+      "target": "2306.06070",
+      "relationship": "cites"
+    },
+    {
+      "source": "2312.13771",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2312.13771",
+      "target": "2312.08914",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2506.01952",
+      "target": "2307.13854",
+      "relationship": "extends"
+    },
+    {
+      "source": "2506.01952",
+      "target": "bench_webarena",
+      "relationship": "extends"
+    },
+    {
+      "source": "2506.01952",
+      "target": "2403.07718",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2511.09157",
+      "target": "2308.03688",
+      "relationship": "extends"
+    },
+    {
+      "source": "2511.09157",
+      "target": "bench_agentbench",
+      "relationship": "extends"
+    },
+    {
+      "source": "2511.09157",
+      "target": "2412.14161",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2511.09157",
+      "target": "2311.12983",
+      "relationship": "cites"
+    },
+    {
+      "source": "2603.25226",
+      "target": "2307.13854",
+      "relationship": "extends"
+    },
+    {
+      "source": "2603.25226",
+      "target": "bench_webarena",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2603.25226",
+      "target": "runtime_verification",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2603.25226",
+      "target": "2506.01952",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2408.06292",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2408.06292",
+      "target": "adversarial_review",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2408.06292",
+      "target": "2304.05332",
+      "relationship": "extends"
+    },
+    {
+      "source": "2408.06292",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2408.06292",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2504.08066",
+      "target": "2408.06292",
+      "relationship": "extends"
+    },
+    {
+      "source": "2504.08066",
+      "target": "adversarial_review",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2504.08066",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2504.08066",
+      "target": "source_grounding",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2504.08066",
+      "target": "ai_researcher",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2304.05332",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2304.05332",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2304.05332",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.04227",
+      "target": "2408.06292",
+      "relationship": "extends"
+    },
+    {
+      "source": "2501.04227",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.04227",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.04227",
+      "target": "2304.05332",
+      "relationship": "cites"
+    },
+    {
+      "source": "2503.18102",
+      "target": "2408.06292",
+      "relationship": "extends"
+    },
+    {
+      "source": "2503.18102",
+      "target": "2504.08066",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2503.18102",
+      "target": "adversarial_review",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2503.18102",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2503.18102",
+      "target": "ai_researcher",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2302.04761",
+      "target": "tool_use_concept",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2302.04761",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2307.16789",
+      "target": "tool_use_concept",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2307.16789",
+      "target": "2302.04761",
+      "relationship": "extends"
+    },
+    {
+      "source": "2307.16789",
+      "target": "tree_search",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.15334",
+      "target": "tool_use_concept",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2305.15334",
+      "target": "2302.04761",
+      "relationship": "extends"
+    },
+    {
+      "source": "2305.15334",
+      "target": "2307.16789",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2303.17580",
+      "target": "tool_use_concept",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2303.17580",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2303.17580",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.14318",
+      "target": "tool_use_concept",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2305.14318",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.14318",
+      "target": "2302.04761",
+      "relationship": "extends"
+    },
+    {
+      "source": "2409.00920",
+      "target": "tool_use_concept",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2409.00920",
+      "target": "2307.16789",
+      "relationship": "extends"
+    },
+    {
+      "source": "2409.00920",
+      "target": "2305.15334",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2409.00920",
+      "target": "structured_output",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2512.24565",
+      "target": "tool_use_concept",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2512.24565",
+      "target": "2409.00920",
+      "relationship": "extends"
+    },
+    {
+      "source": "2512.24565",
+      "target": "2307.16789",
+      "relationship": "cites"
+    },
+    {
+      "source": "2512.24565",
+      "target": "structured_output",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2308.08155",
+      "target": "system_autogen",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2308.08155",
+      "target": "rg_microsoft",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "2308.08155",
+      "target": "multi_agent_orchestration",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2308.08155",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.14325",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.14325",
+      "target": "adversarial_review",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2305.14325",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2304.03442",
+      "target": "rg_stanford",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "2304.03442",
+      "target": "memory_systems",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2304.03442",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2304.03442",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2310.08560",
+      "target": "memory_systems",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2310.08560",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2310.08560",
+      "target": "2304.03442",
+      "relationship": "cites"
+    },
+    {
+      "source": "2504.19413",
+      "target": "memory_systems",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2504.19413",
+      "target": "2310.08560",
+      "relationship": "extends"
+    },
+    {
+      "source": "2504.19413",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2502.12110",
+      "target": "memory_systems",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2502.12110",
+      "target": "2310.08560",
+      "relationship": "extends"
+    },
+    {
+      "source": "2502.12110",
+      "target": "2504.19413",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2502.12110",
+      "target": "self_evolution",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2308.03688",
+      "target": "bench_agentbench",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2308.03688",
+      "target": "2210.03629",
+      "relationship": "cites"
+    },
+    {
+      "source": "2308.03688",
+      "target": "react_paradigm",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2311.12983",
+      "target": "bench_gaia",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2311.12983",
+      "target": "tool_use_concept",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2311.12983",
+      "target": "2308.03688",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2401.13178",
+      "target": "2308.03688",
+      "relationship": "extends"
+    },
+    {
+      "source": "2401.13178",
+      "target": "bench_agentbench",
+      "relationship": "extends"
+    },
+    {
+      "source": "2401.13178",
+      "target": "2307.13854",
+      "relationship": "cites"
+    },
+    {
+      "source": "2401.13178",
+      "target": "2311.12983",
+      "relationship": "cites"
+    },
+    {
+      "source": "2412.14161",
+      "target": "2308.03688",
+      "relationship": "extends"
+    },
+    {
+      "source": "2412.14161",
+      "target": "2307.13854",
+      "relationship": "cites"
+    },
+    {
+      "source": "2412.14161",
+      "target": "2403.07718",
+      "relationship": "extends"
+    },
+    {
+      "source": "2412.14161",
+      "target": "2311.12983",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2412.14470",
+      "target": "agent_safety",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2412.14470",
+      "target": "2402.04249",
+      "relationship": "extends"
+    },
+    {
+      "source": "2412.14470",
+      "target": "2308.03688",
+      "relationship": "cites"
+    },
+    {
+      "source": "2412.14470",
+      "target": "runtime_verification",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2402.04249",
+      "target": "agent_safety",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2402.04249",
+      "target": "adversarial_review",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.16291",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.16291",
+      "target": "memory_systems",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.16291",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.16291",
+      "target": "self_evolution",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2305.16291",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2307.15818",
+      "target": "rg_deepmind",
+      "relationship": "authored_by"
+    },
+    {
+      "source": "2307.15818",
+      "target": "reinforcement_learning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2307.15818",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2311.10537",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2311.10537",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2311.10537",
+      "target": "2305.14325",
+      "relationship": "extends"
+    },
+    {
+      "source": "2404.15155",
+      "target": "2311.10537",
+      "relationship": "extends"
+    },
+    {
+      "source": "2404.15155",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2404.15155",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2404.15155",
+      "target": "2308.08155",
+      "relationship": "cites"
+    },
+    {
+      "source": "2402.18485",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2402.18485",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2402.18485",
+      "target": "reinforcement_learning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2407.06567",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2407.06567",
+      "target": "2402.18485",
+      "relationship": "extends"
+    },
+    {
+      "source": "2407.06567",
+      "target": "2308.08155",
+      "relationship": "cites"
+    },
+    {
+      "source": "2407.06567",
+      "target": "memory_systems",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2412.20138",
+      "target": "multi_agent_orchestration",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2412.20138",
+      "target": "2402.18485",
+      "relationship": "extends"
+    },
+    {
+      "source": "2412.20138",
+      "target": "2407.06567",
+      "relationship": "extends"
+    },
+    {
+      "source": "2412.20138",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2412.20138",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2308.11432",
+      "target": "tool_use_concept",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2308.11432",
+      "target": "memory_systems",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2308.11432",
+      "target": "multi_agent_orchestration",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2308.11432",
+      "target": "2210.03629",
+      "relationship": "cites"
+    },
+    {
+      "source": "2308.11432",
+      "target": "2303.11366",
+      "relationship": "cites"
+    },
+    {
+      "source": "2308.11432",
+      "target": "2302.04761",
+      "relationship": "cites"
+    },
+    {
+      "source": "2308.11432",
+      "target": "2305.10601",
+      "relationship": "cites"
+    },
+    {
+      "source": "2308.11432",
+      "target": "2304.03442",
+      "relationship": "cites"
+    },
+    {
+      "source": "2309.07864",
+      "target": "tool_use_concept",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2309.07864",
+      "target": "memory_systems",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2309.07864",
+      "target": "agent_safety",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2309.07864",
+      "target": "2308.11432",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2309.07864",
+      "target": "2210.03629",
+      "relationship": "cites"
+    },
+    {
+      "source": "2309.07864",
+      "target": "2303.11366",
+      "relationship": "cites"
+    },
+    {
+      "source": "2309.07864",
+      "target": "2304.03442",
+      "relationship": "cites"
+    },
+    {
+      "source": "2309.07864",
+      "target": "2303.17580",
+      "relationship": "cites"
+    },
+    {
+      "source": "2210.03629",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2210.03629",
+      "target": "tool_use_concept",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2303.11366",
+      "target": "self_correction",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2303.11366",
+      "target": "feedback_loops",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2303.11366",
+      "target": "2210.03629",
+      "relationship": "extends"
+    },
+    {
+      "source": "2305.10601",
+      "target": "chain_of_thought",
+      "relationship": "extends"
+    },
+    {
+      "source": "2305.10601",
+      "target": "monte_carlo_tree_search",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2309.02427",
+      "target": "2210.03629",
+      "relationship": "cites"
+    },
+    {
+      "source": "2309.02427",
+      "target": "2303.11366",
+      "relationship": "cites"
+    },
+    {
+      "source": "2309.02427",
+      "target": "2305.10601",
+      "relationship": "cites"
+    },
+    {
+      "source": "2309.02427",
+      "target": "2308.11432",
+      "relationship": "cites"
+    },
+    {
+      "source": "2304.03442",
+      "target": "2210.03629",
+      "relationship": "cites"
+    },
+    {
+      "source": "2510.07841",
+      "target": "group_relative_self_distillation",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.11425",
+      "target": "2510.07841",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2509.25370",
+      "target": "verification_oracle",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2509.25370",
+      "target": "2501.11425",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2602.16666",
+      "target": "2507.08270",
+      "relationship": "cites"
+    },
+    {
+      "source": "2602.16666",
+      "target": "feedback_loops",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2505.19591",
+      "target": "2307.07924",
+      "relationship": "cites"
+    },
+    {
+      "source": "2505.19591",
+      "target": "2308.00352",
+      "relationship": "cites"
+    },
+    {
+      "source": "2509.11079",
+      "target": "2307.07924",
+      "relationship": "cites"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "2503.18102",
+      "relationship": "related_to"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2511.13646",
+      "target": "2407.16741",
+      "relationship": "cites"
+    },
+    {
+      "source": "2511.13646",
+      "target": "2407.01489",
+      "relationship": "cites"
+    },
+    {
+      "source": "2511.13646",
+      "target": "rejection_fine_tuning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "feynman",
+      "target": "2309.02427",
+      "relationship": "cites"
+    },
+    {
+      "source": "feynman",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "typia_autobe",
+      "target": "2210.03629",
+      "relationship": "cites"
+    },
+    {
+      "source": "2603.24533",
+      "target": "2411.10323",
+      "relationship": "cites"
+    },
+    {
+      "source": "2603.24533",
+      "target": "2508.09123",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2603.24533",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2512.20845",
+      "target": "2308.08155",
+      "relationship": "cites"
+    },
+    {
+      "source": "2509.25370",
+      "target": "2308.03688",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2501.11425",
+      "target": "2405.15793",
+      "relationship": "cites"
+    },
+    {
+      "source": "2507.21046",
+      "target": "2309.07864",
+      "relationship": "cites"
+    },
+    {
+      "source": "2508.07407",
+      "target": "2309.07864",
+      "relationship": "cites"
+    },
+    {
+      "source": "2508.07407",
+      "target": "2308.11432",
+      "relationship": "cites"
+    },
+    {
+      "source": "2511.15755",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2407.01489",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2405.11403",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2405.11403",
+      "target": "2405.15793",
+      "relationship": "competes_with"
+    },
+    {
+      "source": "2307.07924",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2307.07924",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2308.00352",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2308.00352",
+      "target": "2308.08155",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2401.13649",
+      "target": "2312.08914",
+      "relationship": "cites"
+    },
+    {
+      "source": "2401.13649",
+      "target": "2306.06070",
+      "relationship": "cites"
+    },
+    {
+      "source": "2404.07972",
+      "target": "2411.10323",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2411.17465",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2412.09605",
+      "target": "2411.17465",
+      "relationship": "cites"
+    },
+    {
+      "source": "2412.09605",
+      "target": "2312.08914",
+      "relationship": "cites"
+    },
+    {
+      "source": "2508.09123",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2508.09123",
+      "target": "2307.13854",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2312.13771",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2312.13771",
+      "target": "self_correction",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2504.08066",
+      "target": "2501.04227",
+      "relationship": "cites"
+    },
+    {
+      "source": "2504.08066",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2503.18102",
+      "target": "2501.04227",
+      "relationship": "extends"
+    },
+    {
+      "source": "2503.18102",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.15334",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.15334",
+      "target": "structured_output",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2303.17580",
+      "target": "2302.04761",
+      "relationship": "cites"
+    },
+    {
+      "source": "2305.14318",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2409.00920",
+      "target": "rejection_fine_tuning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2512.24565",
+      "target": "2305.15334",
+      "relationship": "cites"
+    },
+    {
+      "source": "2512.24565",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2304.03442",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2310.08560",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2504.19413",
+      "target": "2304.03442",
+      "relationship": "cites"
+    },
+    {
+      "source": "2502.12110",
+      "target": "2304.03442",
+      "relationship": "cites"
+    },
+    {
+      "source": "2502.12110",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2412.14161",
+      "target": "tool_use_concept",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2412.14161",
+      "target": "multi_agent_orchestration",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2412.14470",
+      "target": "2509.23864",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2305.16291",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.16291",
+      "target": "2210.03629",
+      "relationship": "cites"
+    },
+    {
+      "source": "2311.10537",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2404.15155",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2402.18485",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2402.18485",
+      "target": "memory_systems",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2506.01952",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2506.01952",
+      "target": "2411.10323",
+      "relationship": "cites"
+    },
+    {
+      "source": "2603.25226",
+      "target": "2411.10323",
+      "relationship": "cites"
+    },
+    {
+      "source": "2603.25226",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2511.09157",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2511.09157",
+      "target": "tool_use_concept",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2510.07841",
+      "target": "2308.11432",
+      "relationship": "cites"
+    },
+    {
+      "source": "2507.08270",
+      "target": "2412.14470",
+      "relationship": "cites"
+    },
+    {
+      "source": "2507.08270",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2512.20798",
+      "target": "2509.23864",
+      "relationship": "cites"
+    },
+    {
+      "source": "2512.20798",
+      "target": "verification_oracle",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2509.16941",
+      "target": "2407.01489",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2403.07718",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2403.07718",
+      "target": "tool_use_concept",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2412.09605",
+      "target": "self_correction",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.04227",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.04227",
+      "target": "adversarial_review",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2408.06292",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.14325",
+      "target": "self_correction",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2307.16789",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.15334",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2303.17580",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2305.14318",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "venue_arxiv",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2210.03629",
+      "target": "venue_iclr",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2303.11366",
+      "target": "venue_neurips",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2305.10601",
+      "target": "venue_neurips",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2302.04761",
+      "target": "venue_neurips",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2308.08155",
+      "target": "venue_arxiv",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2307.13854",
+      "target": "venue_iclr",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2310.06770",
+      "target": "venue_iclr",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2304.03442",
+      "target": "venue_arxiv",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2305.16291",
+      "target": "venue_neurips",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2307.15818",
+      "target": "venue_arxiv",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2308.11432",
+      "target": "venue_arxiv",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2309.07864",
+      "target": "venue_arxiv",
+      "relationship": "published_at"
+    },
+    {
+      "source": "2407.06567",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2407.06567",
+      "target": "reinforcement_learning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2412.20138",
+      "target": "2305.14325",
+      "relationship": "cites"
+    },
+    {
+      "source": "2412.20138",
+      "target": "adversarial_review",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2510.07841",
+      "target": "2309.07864",
+      "relationship": "cites"
+    },
+    {
+      "source": "2507.21046",
+      "target": "tool_use_concept",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2508.07407",
+      "target": "tool_use_concept",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2511.13646",
+      "target": "group_relative_self_distillation",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2509.25370",
+      "target": "2510.07841",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2509.25370",
+      "target": "react_paradigm",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2501.11425",
+      "target": "reinforcement_learning",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2602.16666",
+      "target": "2308.11432",
+      "relationship": "cites"
+    },
+    {
+      "source": "2602.16666",
+      "target": "2309.07864",
+      "relationship": "cites"
+    },
+    {
+      "source": "ai_researcher",
+      "target": "2504.08066",
+      "relationship": "related_to"
+    },
+    {
+      "source": "feynman",
+      "target": "2210.03629",
+      "relationship": "cites"
+    },
+    {
+      "source": "feynman",
+      "target": "self_evolution",
+      "relationship": "addresses_problem"
+    },
+    {
+      "source": "2603.24533",
+      "target": "2306.06070",
+      "relationship": "cites"
+    },
+    {
+      "source": "2603.24533",
+      "target": "2312.13771",
+      "relationship": "extends"
+    },
+    {
+      "source": "2603.24533",
+      "target": "feedback_loops",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2411.10323",
+      "target": "2403.07718",
+      "relationship": "evaluates_on"
+    },
+    {
+      "source": "2411.10323",
+      "target": "runtime_verification",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2306.06070",
+      "target": "chain_of_thought",
+      "relationship": "uses_technique"
+    },
+    {
+      "source": "2306.06070",
+      "target": "venue_neurips",
+      "relationship": "published_at"
+    }
+  ]
+}
