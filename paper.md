@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Autonomous AI agents are increasingly deployed for complex, multi-step tasks — from scientific research automation to GUI navigation to backend code generation. Yet first-try success rates on non-trivial tasks remain stubbornly low, often below 10% for structurally complex outputs. This paper surveys four recent systems that share a common architectural insight: **failure is not a terminal state but a structured input to a correction loop**. We analyze AI-Researcher (HKUDS, NeurIPS 2025 Spotlight), an end-to-end scientific research pipeline using iterative judge-implementer loops; the Typia/AutoBe function calling harness (Wrtn Technologies), which engineers compiler-validated feedback cycles to lift structured output accuracy from 6.75% to 99.8%; Feynman (Companion AI), a research agent enforcing source-grounded verification with adversarial review; and UI-Voyager (Tencent Hunyuan), which extracts step-level training signal from failed GUI trajectories via fork point detection. We identify four cross-cutting design principles — deterministic verification, structured error localization, iterative refinement with convergence guarantees, and failure-as-data — and propose a unified taxonomy for feedback-driven agent architectures. Our analysis suggests that the reliability ceiling of autonomous agents is determined less by model capability than by the engineering quality of the feedback loop surrounding the model.
+Autonomous AI agents are increasingly deployed for complex, multi-step tasks — from scientific research automation to GUI navigation to backend code generation. Yet first-try success rates on non-trivial tasks remain stubbornly low, often below 10% for structurally complex outputs. This paper surveys four primary systems and situates them within the broader landscape of recent research (2025–2026) to argue that **failure is not a terminal state but a structured input to a correction loop**. We analyze in depth AI-Researcher (HKUDS, NeurIPS 2025 Spotlight), the Typia/AutoBe function calling harness (Wrtn Technologies), Feynman (Companion AI), and UI-Voyager (Tencent Hunyuan), then connect their mechanisms to concurrent advances including AgentDebug's failure taxonomy [5], Agent-R's on-the-fly reflection via Monte Carlo Tree Search [6], Live-SWE-agent's runtime self-evolution [7], formal reliability frameworks [8], runtime verification [9], and difficulty-aware orchestration [10]. Across this body of work, we identify four cross-cutting design principles — deterministic verification, structured error localization, iterative refinement with convergence guarantees, and failure-as-data — and propose a unified taxonomy for feedback-driven agent architectures. Our analysis suggests that the reliability ceiling of autonomous agents is determined less by model capability than by the engineering quality of the feedback loop surrounding the model.
 
 ---
 
@@ -14,15 +14,18 @@ Autonomous AI agents are increasingly deployed for complex, multi-step tasks —
 
 The deployment of large language models (LLMs) as autonomous agents — systems that take actions in environments rather than merely generating text — has accelerated rapidly since 2024. Agents now write code, navigate GUIs, conduct literature reviews, and orchestrate multi-step workflows. Yet a persistent gap separates demonstration-quality performance from production-grade reliability. Benchmarks consistently reveal that even frontier models fail on the majority of complex agentic tasks on first attempt: GPT-4o achieves 28% on nested tool calling (NESTFUL, EMNLP 2025), constrained decoding covers only 3–41% of hard JSON schemas (JSONSchemaBench, ICLR 2025), and base vision-language models reach 45% on mobile GUI tasks (AndroidWorld).
 
-A naive response is to wait for more capable models. The systems surveyed in this paper take a different approach: they treat the model as one component within an engineered system where **failures are systematically converted into corrective signal**. This survey examines four such systems across distinct domains, extracts shared architectural principles, and argues that feedback loop engineering — not model scaling alone — is the primary lever for achieving reliable autonomous behavior.
+A naive response is to wait for more capable models. The systems surveyed in this paper take a different approach: they treat the model as one component within an engineered system where **failures are systematically converted into corrective signal**. This is not an isolated insight. Recent work across multiple subfields — agent reliability [8], runtime verification [9], self-evolving agents [11, 12], agentic coding [7, 13], and GUI automation benchmarks [14, 15, 16] — converges on the same conclusion: feedback loop engineering, not model scaling alone, is the primary lever for achieving reliable autonomous behavior.
+
+This survey examines four primary systems in depth, situates them within this broader research landscape, extracts shared architectural principles, and proposes a unified taxonomy for feedback-driven agent design.
 
 ### 1.1 Scope and Contributions
 
-We make three contributions:
+We make four contributions:
 
 1. **Detailed technical analysis** of four feedback-driven agent systems spanning scientific research, structured output generation, grounded information synthesis, and GUI automation.
-2. **A cross-cutting taxonomy** identifying four design principles that recur across all systems despite their domain differences.
-3. **A comparative framework** mapping each system's feedback mechanisms along dimensions of verification type, error granularity, correction mechanism, and convergence properties.
+2. **A landscape review** connecting these systems to 20+ concurrent research papers (2025–2026) on agent reliability, self-correction, and self-evolution.
+3. **A cross-cutting taxonomy** identifying four design principles that recur across all systems despite their domain differences.
+4. **A comparative framework** mapping each system's feedback mechanisms along dimensions of verification type, error granularity, correction mechanism, and convergence properties.
 
 ### 1.2 Terminology
 
@@ -222,7 +225,83 @@ UI-Voyager demonstrates that the information content of failures often exceeds t
 
 ---
 
-## 3. Comparative Analysis
+## 3. The Broader Landscape (2025–2026)
+
+The four systems analyzed in Section 2 do not exist in isolation. A wave of concurrent research addresses overlapping concerns — agent failure analysis, self-correction, self-evolution, runtime verification, and reliability measurement. This section maps the broader landscape and draws connections to the primary systems.
+
+### 3.1 Failure Taxonomies and Diagnostic Frameworks
+
+**AgentDebug** [5] (Zhu et al., September 2025) provides the most systematic treatment of *where* and *why* LLM agents fail. The authors introduce **AgentErrorTaxonomy**, a modular classification of failure modes across five agent components: memory, reflection, planning, action, and system-level integration. Paired with **AgentErrorBench** — an annotated dataset of failure trajectories from three benchmarks — and the **AgentDebug** correction framework, the system achieves 24% higher all-correct accuracy and 17% higher step accuracy through iterative root-cause identification and corrective feedback.
+
+AgentDebug's taxonomy is complementary to the systems in Section 2. Where AI-Researcher's Judge Agent checks *domain-specific* correctness (atomic academic definitions), and Typia/AutoBe's compiler checks *structural* correctness (schema conformance), AgentDebug checks *process-level* correctness — was the right tool called? Did the agent maintain accurate state? Did planning produce a viable decomposition? A complete feedback-driven system could layer all three levels of verification.
+
+**Multi-Agent Reflexion (MAR)** [17] (Ozer et al., December 2025) addresses a subtler failure mode: **degeneration of thought** in self-reflection. When a single agent generates actions, evaluates its own behavior, and produces reflections, it tends toward confirmation bias — repeating the same errors with cosmetically different justifications. MAR deploys multiple agents with distinct personas to debate failed reasoning, achieving 47% EM on HotPotQA and 82.7% on HumanEval, surpassing single-model reflection baselines. This validates Feynman's architectural choice of separating Researcher and Reviewer roles rather than having a single agent self-review.
+
+### 3.2 On-the-Fly Reflection and Self-Training
+
+**Agent-R** [6] (Yuan et al., January 2025) introduces a mechanism for agents to **reflect during task execution** rather than only after completion. Using Monte Carlo Tree Search (MCTS), the system constructs training data from error-recovery trajectories: the model identifies its first erroneous step in a failed trajectory, then splices it with a correct path discovered via tree search. This achieves +5.59% performance gains across three interactive environments while avoiding repetitive error loops.
+
+Agent-R's approach is architecturally between UI-Voyager's offline fork point detection and AI-Researcher's online Judge–ML loop. Like UI-Voyager, it identifies specific erroneous steps within trajectories. Like AI-Researcher, it enables mid-execution correction. The MCTS-based trajectory splicing can be seen as a generalization of UI-Voyager's SSIM-based fork point detection — both identify divergence points between correct and incorrect paths, but MCTS explores the space algorithmically rather than relying on visual state matching.
+
+**Self-Improving LLM Agents at Test-Time** [18] (Acikgoz et al., October 2025) proposes a three-phase test-time improvement method: identifying struggling samples, generating similar examples from uncertain cases, and fine-tuning with those new samples. This achieves approximately 5.48% absolute accuracy gain while requiring 68× fewer training samples than standard approaches. The insight — that the model's own uncertainty signal identifies exactly where additional training is most valuable — echoes the Typia/AutoBe finding that the weakest model is the best stress-tester.
+
+### 3.3 Self-Evolving Agents
+
+**Live-SWE-agent** [7] (Xia et al., November 2025) represents the most radical self-evolution approach: a software engineering agent that **autonomously and continuously evolves its own implementation** during runtime. Starting with only a minimal scaffold with bash tools, the agent enhances its own capabilities on-the-fly as it encounters new problem types. It achieves 77.4% on SWE-bench Verified (without test-time scaling) and 45.8% on SWE-Bench Pro — both state-of-the-art results surpassing manually crafted agents.
+
+Live-SWE-agent's self-evolution goes beyond the systems in Section 2 in a critical way: it modifies not just its outputs but its own *architecture*. Where UI-Voyager updates model weights and AI-Researcher iterates within a fixed pipeline, Live-SWE-agent demonstrates that the feedback loop itself can be a target of optimization. This suggests a hierarchy of feedback: Level 1 corrects outputs, Level 2 corrects strategies, and Level 3 corrects the correction mechanism itself.
+
+Two comprehensive surveys contextualize these developments. Fang et al. [11] propose a unified framework for self-evolving agents with four components — System Inputs, Agent System, Environment, and Optimisers — covering evolution techniques for biomedicine, programming, and finance. Gao et al. [12] examine self-evolution through three dimensions: *what* components evolve (memory, tools, models), *when* adaptation occurs (online vs. offline), and *how* evolution mechanisms function (reinforcement, self-play, experience accumulation).
+
+### 3.4 Agent Reliability and Runtime Verification
+
+**Towards a Science of AI Agent Reliability** [8] (Rabanser et al., February 2026) provides the most rigorous treatment of reliability measurement. The authors propose 12 metrics across four dimensions:
+
+| Dimension | Metrics | Key Finding |
+|-----------|---------|-------------|
+| **Consistency** | Cross-run variance, output stability | Agents produce different results on identical inputs across runs |
+| **Robustness** | Perturbation sensitivity, adversarial resilience | Minor prompt variations cause disproportionate failures |
+| **Predictability** | Confidence calibration, failure forecasting | Models are poorly calibrated about when they will fail |
+| **Safety** | Constraint adherence, recovery from unsafe states | Recent capability gains yield only small reliability improvements |
+
+Their evaluation of 14 models across two benchmarks reveals a sobering finding: **recent capability gains have yielded only small improvements in reliability**. This directly supports our reliability inversion thesis — capability and reliability are orthogonal axes, and feedback loop engineering addresses the latter.
+
+**AgentGuard** [9] (Koohestani, September 2025) introduces **runtime verification** for autonomous agents. It functions as an inspection layer that converts agent input-output data into formal events reflecting state transitions, then uses online learning to construct a Markov Decision Process representing emergent behavior. Probabilistic model checking continuously verifies quantitative properties and calculates failure probability under specific constraints. This approach could be composed with any of the four primary systems to provide a formal safety layer atop their domain-specific feedback loops.
+
+**Agent Safety Alignment via Reinforcement Learning** [19] (July 2025) proposes the first unified safety-alignment framework for tool-using agents using sandboxed RL. A related benchmark [20] (December 2025) reveals 30–71% misalignment rates across 12 LLMs, with a counterintuitive finding: **stronger reasoning does not ensure safety**. This underscores that feedback loops designed for correctness do not automatically guarantee safety — a distinct verification layer is needed.
+
+### 3.5 Multi-Agent Orchestration
+
+**Evolving Orchestration** [21] (Dang et al., NeurIPS 2025) proposes a "puppeteer-style" paradigm where a centralized orchestrator dynamically directs agents in response to evolving task states, trained via reinforcement learning. The orchestrator learns compact, cyclical reasoning patterns that achieve improved performance with lower computational requirements — demonstrating that the orchestration layer itself benefits from learning.
+
+**Difficulty-Aware Agentic Orchestration (DAAO)** [10] (September 2025, WWW 2026) dynamically adjusts workflow complexity based on task difficulty, achieving +11.21% accuracy at 64% of the cost. This addresses a limitation of fixed-pipeline systems like AI-Researcher: not every task requires the full 7-agent pipeline. Simple tasks waste resources when routed through complex workflows, while hard tasks may need additional iteration cycles.
+
+**Multi-Agent LLM Orchestration for Incident Response** [22] (Drammeh, November 2025) provides striking empirical evidence: through 348 controlled experiments, multi-agent orchestration achieved **100% actionable recommendation rate** versus 1.7% for single-agent approaches, with **zero quality variance** across trials. This aligns with Feynman's multi-agent architecture and suggests that the separation of concerns (generation, verification, correction) is not merely an architectural preference but a reliability necessity.
+
+### 3.6 Benchmarks Revealing the Gap
+
+Several recent benchmarks quantify the gap that feedback-driven systems must bridge:
+
+- **SWE-Bench Pro** [13] (September 2025): 1,865 problems requiring "hours to days for a professional software engineer," spanning multiple files — far harder than the original SWE-Bench. Live-SWE-agent's 45.8% shows substantial progress, but over half of real-world engineering tasks remain unsolved.
+- **TheAgentCompany** [23] (Xu et al., December 2024): Professional workplace tasks where the best agent completes only 30% autonomously, with difficult long-horizon tasks remaining beyond reach.
+- **WebChoreArena** [14] (June 2025): Labor-intensive web tasks where top LLMs drop from 54.8% (WebArena) to 37.8%, exposing brittleness on sustained multi-step reasoning.
+- **WebTestBench** [16] (March 2026): Automated web testing where all models fail to exceed 30% F1, with GPT-5.1 achieving only 26.4%.
+- **ProBench** [15] (November 2025, AAAI 2026): GUI tasks with process-level evaluation showing that "advanced GUI agents show significant limitations for real-world scenarios."
+- **MCPAgentBench** [24] (December 2025): Tool-use via Model Context Protocol, revealing significant performance differences on complex multi-step tool invocations.
+
+These benchmarks collectively demonstrate that the reliability gap identified in Section 1 is not narrowing through model scaling alone — validating the central thesis of this survey.
+
+### 3.7 Infrastructure: Memory, Tools, and SDKs
+
+Several infrastructure-level advances support the feedback-driven paradigm:
+
+- **A-MEM** [25] (February 2025) introduces Zettelkasten-inspired agentic memory with dynamically interconnected knowledge networks, enabling agents to accumulate and retrieve experience across tasks — a prerequisite for learning from failure at the system level.
+- **OpenHands SDK** [26] (November 2025) provides a composable framework for building software development agents with native sandboxed execution, lifecycle control, and built-in security — the kind of infrastructure that makes production-grade feedback loops feasible.
+- **STED and Consistency Scoring** [27] (November 2025) introduces Semantic Tree Edit Distance for JSON comparison, enabling nuanced measurement of structured output quality beyond binary pass/fail — directly relevant to the Typia/AutoBe harness's incremental correction approach.
+
+---
+
+## 4. Comparative Analysis
 
 ### 3.1 A Taxonomy of Feedback Mechanisms
 
@@ -295,9 +374,9 @@ This suggests a **reliability inversion principle**: beyond a minimum capability
 
 ---
 
-## 4. Discussion
+## 5. Discussion
 
-### 4.1 When Feedback Loops Suffice and When They Don't
+### 5.1 When Feedback Loops Suffice and When They Don't
 
 The systems surveyed address tasks where:
 1. **Correctness is verifiable** — whether by compiler, rule-based checker, source resolution, or visual state comparison
@@ -306,17 +385,20 @@ The systems surveyed address tasks where:
 
 Tasks lacking these properties — open-ended creative generation, ethical reasoning, tasks with no ground truth — may not benefit from the same feedback loop architecture. The boundary of this approach is fundamentally the boundary of verifiability.
 
-### 4.2 The Cost of Feedback
+Notably, the safety alignment literature [19, 20] reveals an important caveat: feedback loops designed for *correctness* do not automatically address *safety*. The finding that stronger reasoning does not ensure safety [20] suggests that safety verification requires its own dedicated oracle, separate from task-completion verification. AgentGuard's runtime verification framework [9] points toward how this might be achieved through continuous probabilistic model checking.
+
+### 5.2 The Cost of Feedback
 
 Feedback loops trade compute for reliability. Each iteration requires additional LLM calls (AI-Researcher, Feynman), compilation cycles (Typia/AutoBe), or training steps (UI-Voyager). The economic viability depends on:
 
 - **Cost of failure** vs. **cost of iteration**: For scientific research or production backend generation, the cost of an undetected error far exceeds the cost of additional LLM calls
 - **Convergence speed**: Structured error localization dramatically reduces the number of iterations needed compared to binary feedback
 - **Amortization**: UI-Voyager's GRSD training cost is amortized across all future inference, making the per-task cost negligible at scale
+- **Adaptive complexity**: DAAO [10] demonstrates that cost can be reduced by 36% through difficulty-aware routing — simple tasks get simpler pipelines, hard tasks get the full treatment
 
-### 4.3 Toward a Unified Feedback Architecture
+### 5.3 Toward a Unified Feedback Architecture
 
-Despite their domain differences, the four systems share a remarkably similar abstract architecture:
+Despite their domain differences, the primary and landscape systems share a remarkably similar abstract architecture:
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────────┐
@@ -331,39 +413,68 @@ Despite their domain differences, the four systems share a remarkably similar ab
 ```
 
 The differences lie in the instantiation of each component:
-- **Verification** ranges from compiler checks to adversarial LLM review
-- **Localization** ranges from JSON paths to fork point detection
-- **Correction** ranges from in-context retry to model weight updates
+- **Verification** ranges from compiler checks (Typia) to adversarial LLM review (Feynman) to probabilistic model checking (AgentGuard [9])
+- **Localization** ranges from JSON paths (Typia) to failure taxonomies (AgentDebug [5]) to fork point detection (UI-Voyager) to MCTS-based trajectory analysis (Agent-R [6])
+- **Correction** ranges from in-context retry (AI-Researcher) to targeted field repair (Typia) to model weight updates (UI-Voyager) to self-architecture modification (Live-SWE-agent [7])
 
-A productive direction for future work is developing **domain-agnostic feedback loop frameworks** that allow practitioners to plug in domain-specific verification oracles while inheriting the iteration, convergence monitoring, and error localization infrastructure.
+The landscape review reveals a **hierarchy of feedback loops**:
 
-### 4.4 Implications for Agent System Design
+| Level | What is corrected | Example Systems |
+|-------|------------------|-----------------|
+| **L1: Output** | The agent's current output | Typia/AutoBe, AI-Researcher Judge loop |
+| **L2: Strategy** | The agent's approach to the task | Agent-R [6], MAR [17], Feynman's adversarial review |
+| **L3: Capability** | The agent's model weights | UI-Voyager GRSD, Self-Improving Agents [18] |
+| **L4: Architecture** | The agent's own structure and tools | Live-SWE-agent [7] |
 
-We distill the following design recommendations from the surveyed systems:
+Most deployed systems operate at L1–L2. The frontier is L3–L4, where the feedback loop itself becomes a target of optimization. Live-SWE-agent [7] is the most striking example: a minimal scaffold that evolves its own tool set, achieving state-of-the-art results by optimizing the correction mechanism itself.
 
-1. **Design the verifier before the generator.** The quality ceiling of an agent system is determined by the quality of its verification oracle. Invest in precise, localizing verifiers.
+### 5.4 The Reliability–Capability Orthogonality
+
+The reliability framework of Rabanser et al. [8] provides formal grounding for the reliability inversion observed in Section 4.3. Their 12 metrics across four dimensions (consistency, robustness, predictability, safety) are largely orthogonal to standard capability benchmarks. A model can score highly on capability while exhibiting poor consistency (different results on identical inputs across runs) and poor predictability (miscalibrated confidence about when it will fail).
+
+This orthogonality explains why the feedback loop engineering approach works: it addresses dimensions that model scaling does not. The Typia/AutoBe system's model-agnostic compilation rates and multi-agent incident response's zero quality variance [22] are not anomalies — they are the expected outcome of engineering for reliability rather than capability.
+
+### 5.5 Implications for Agent System Design
+
+We distill the following design recommendations, informed by both the primary systems and the broader landscape:
+
+1. **Design the verifier before the generator.** The quality ceiling of an agent system is determined by the quality of its verification oracle. Invest in precise, localizing verifiers. AgentDebug's five-component failure taxonomy [5] provides a useful checklist for verification coverage.
 
 2. **Prefer schemas over prompts for constraint specification.** The Pink Elephant Principle (Typia/AutoBe) generalizes: constraints expressed as structural schemas are more reliable than natural language instructions.
 
-3. **Make failure states explicit and structured.** Every system benefits from representing failure with the same precision as success — specific locations, expected vs. actual values, severity grades.
+3. **Make failure states explicit and structured.** Every system benefits from representing failure with the same precision as success — specific locations, expected vs. actual values, severity grades. AgentDebug [5] and STED [27] provide frameworks for structured failure representation.
 
-4. **Test with the weakest viable model.** Following Typia/AutoBe's insight, weak models are superior stress-testers. A system robust to a 3B model's errors is robust to everything.
+4. **Test with the weakest viable model.** Following Typia/AutoBe's insight, weak models are superior stress-testers. A system robust to a 3B model's errors is robust to everything. Self-Improving Agents [18] formalizes this: the model's own uncertainty identifies where improvement is most valuable.
 
-5. **Separate generation from verification roles.** AI-Researcher's Judge/ML split and Feynman's Researcher/Reviewer/Verifier division enforce adversarial dynamics that catch errors self-review would miss.
+5. **Separate generation from verification roles.** AI-Researcher's Judge/ML split, Feynman's Researcher/Reviewer/Verifier division, and MAR's multi-persona debate [17] all enforce adversarial dynamics that catch errors self-review would miss.
+
+6. **Adapt feedback intensity to task difficulty.** DAAO [10] shows that fixed-complexity pipelines waste resources on easy tasks. Difficulty-aware routing reduces cost by 36% without sacrificing accuracy.
+
+7. **Consider feedback at multiple levels.** Output-level correction (L1) is necessary but often insufficient. Strategy-level correction (L2, via Agent-R [6] or MAR [17]) catches systematic errors. Capability-level correction (L3, via UI-Voyager) amortizes learning across tasks. Architecture-level correction (L4, via Live-SWE-agent [7]) enables open-ended improvement.
+
+8. **Layer safety verification atop correctness verification.** Correctness and safety are orthogonal concerns [19, 20]. AgentGuard [9] shows how runtime verification can provide a formal safety layer independent of task-specific feedback loops.
 
 ---
 
-## 5. Conclusion
+## 6. Conclusion
 
-The four systems surveyed in this paper — AI-Researcher, Typia/AutoBe, Feynman, and UI-Voyager — represent a maturing paradigm in AI agent engineering. They share the conviction that **reliability is an architectural property, not a model property**. First-try accuracy is a starting condition, not a ceiling; what matters is the system's ability to detect, localize, and correct errors through structured feedback.
+The systems surveyed in this paper — four in depth and twenty more across the broader 2025–2026 landscape — represent a maturing paradigm in AI agent engineering. They share the conviction that **reliability is an architectural property, not a model property**. First-try accuracy is a starting condition, not a ceiling; what matters is the system's ability to detect, localize, and correct errors through structured feedback.
 
-The most striking finding is the **reliability inversion**: the system with the lowest first-try accuracy (6.75%) achieves the highest end-to-end reliability (99.8–100%). This challenges the prevailing focus on benchmark-measured model capability and suggests that the field's attention should shift toward verification oracle design, error localization granularity, and feedback loop convergence properties.
+Three findings stand out:
 
-The "failure is the teacher" principle manifests differently across domains — as compiler diagnostics in structured output, as adversarial review in research synthesis, as concept-level validation in scientific implementation, and as fork point detection in GUI navigation — but the underlying mechanism is universal: **systematic conversion of error signal into corrective action**. As autonomous agents are deployed in increasingly high-stakes domains, this principle may prove more important than any single advance in model capability.
+**The reliability inversion is real and reproducible.** The system with the lowest first-try accuracy (Typia/AutoBe at 6.75%) achieves the highest end-to-end reliability (99.8–100%). Multi-agent incident response [22] achieves 100% actionable recommendations versus 1.7% for single-agent approaches. UI-Voyager surpasses human performance with a 4B model. This is not cherry-picking — Rabanser et al.'s formal reliability framework [8] confirms that capability and reliability are orthogonal dimensions.
+
+**Feedback loops form a hierarchy.** The field is progressing from output-level correction (L1) through strategy-level (L2) and capability-level (L3) to architecture-level self-modification (L4). Live-SWE-agent [7] achieves state-of-the-art results by evolving its own tool set — the correction mechanism optimizing itself. This hierarchy suggests a research agenda: what are the theoretical limits of self-referential feedback?
+
+**The gap between benchmarks and production remains vast.** Despite impressive results on established benchmarks, newer and harder evaluations consistently reveal fragility: 30% on workplace tasks [23], 37.8% on web chores [14], 26.4% F1 on web testing [16]. The feedback-driven approach has demonstrated it can close this gap in specific domains (Typia/AutoBe, UI-Voyager), but generalizing to arbitrary domains with arbitrary verification oracles remains an open challenge.
+
+The "failure is the teacher" principle manifests differently across domains — as compiler diagnostics in structured output, as adversarial review in research synthesis, as concept-level validation in scientific implementation, as fork point detection in GUI navigation, as failure taxonomies in agent debugging [5], and as MCTS-based trajectory splicing in reflective agents [6] — but the underlying mechanism is universal: **systematic conversion of error signal into corrective action**. As autonomous agents are deployed in increasingly high-stakes domains, this principle may prove more important than any single advance in model capability.
 
 ---
 
 ## References
+
+### Primary Systems
 
 [1] HKUDS. "AI-Researcher: Autonomous End-to-End Scientific Research." NeurIPS 2025 (Spotlight). GitHub: https://github.com/HKUDS/AI-Researcher
 
@@ -373,6 +484,72 @@ The "failure is the teacher" principle manifests differently across domains — 
 
 [4] Lin, Z., Liu, F., Yang, Y., et al. "UI-Voyager: A Self-Evolving GUI Agent Learning via Failed Experience." arXiv:2603.24533, March 2026. GitHub: https://github.com/ui-voyager/UI-Voyager
 
-[5] NESTFUL: Nested Function Call Evaluation. EMNLP 2025.
+### Failure Analysis and Self-Correction
 
-[6] JSONSchemaBench: Constrained Decoding Benchmark. ICLR 2025.
+[5] Zhu, K., Liu, Z., Li, B., et al. "Where LLM Agents Fail and How They Can Learn From Failures." arXiv:2509.25370, September 2025.
+
+[6] Yuan, S., Chen, Z., Xi, Z., et al. "Agent-R: Training Language Model Agents to Reflect via Iterative Self-Training." arXiv:2501.11425, January 2025.
+
+### Self-Evolving Agents
+
+[7] Xia, C.S., Wang, Z., Yang, Y., et al. "Live-SWE-agent: Can Software Engineering Agents Self-Evolve on the Fly?" arXiv:2511.13646, November 2025.
+
+### Reliability and Verification
+
+[8] Rabanser, S., Kapoor, S., Kirgis, P., et al. "Towards a Science of AI Agent Reliability." arXiv:2602.16666, February 2026.
+
+[9] Koohestani, R. "AgentGuard: Runtime Verification of AI Agents." arXiv:2509.23864, September 2025.
+
+### Orchestration
+
+[10] "DAAO: Difficulty-Aware Agentic Orchestration." arXiv:2509.11079, September 2025. WWW 2026.
+
+### Surveys
+
+[11] Fang, J., Peng, Y., Zhang, X., et al. "A Comprehensive Survey of Self-Evolving AI Agents." arXiv:2508.07407, August 2025.
+
+[12] Gao, H., Geng, J., Hua, W., et al. "A Survey of Self-Evolving Agents: What, When, How, and Where to Evolve." arXiv:2507.21046, July 2025.
+
+### Benchmarks
+
+[13] Deng, X., Da, J., Pan, E., et al. "SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?" arXiv:2509.16941, September 2025.
+
+[14] Miyai, A., Zhao, Z., Egashira, K., et al. "WebChoreArena: Evaluating Web Browsing Agents on Realistic Tedious Web Tasks." arXiv:2506.01952, June 2025.
+
+[15] Yang, L., Wang, Z., Tang, X., et al. "ProBench: Benchmarking GUI Agents with Accurate Process Information." arXiv:2511.09157, November 2025. AAAI 2026.
+
+[16] Kong, F., Zhang, J., Yue, Y., et al. "WebTestBench: Evaluating Computer-Use Agents towards End-to-End Automated Web Testing." arXiv:2603.25226, March 2026.
+
+### Multi-Agent Reflection and Orchestration
+
+[17] Ozer, O., Wu, G., Wang, Y., et al. "MAR: Multi-Agent Reflexion Improves Reasoning Abilities in LLMs." arXiv:2512.20845, December 2025.
+
+[18] Acikgoz, E.C., Qian, C., Ji, H., et al. "Self-Improving LLM Agents at Test-Time." arXiv:2510.07841, October 2025.
+
+### Safety and Alignment
+
+[19] "Agent Safety Alignment via Reinforcement Learning." arXiv:2507.08270, July 2025.
+
+[20] "Outcome-Driven Constraint Violations Benchmark." arXiv:2512.20798, December 2025.
+
+[21] Dang, Y., Qian, C., Luo, X., et al. "Multi-Agent Collaboration via Evolving Orchestration." arXiv:2505.19591, NeurIPS 2025.
+
+[22] Drammeh, P. "Multi-Agent LLM Orchestration Achieves Deterministic, High-Quality Decision Support for Incident Response." arXiv:2511.15755, November 2025.
+
+### Infrastructure
+
+[23] Xu, F.F., Song, Y., Li, B., et al. "TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks." arXiv:2412.14161, December 2024.
+
+[24] Liu, W., Liu, Z., Dai, E., et al. "MCPAgentBench: A Real-world Task Benchmark for Evaluating LLM Agent MCP Tool Use." arXiv:2512.24565, December 2025.
+
+[25] "A-MEM: Agentic Memory for LLM Agents." arXiv:2502.12110, February 2025.
+
+[26] Wang, X., Rosenberg, S., Michelini, J., et al. "The OpenHands Software Agent SDK." arXiv:2511.03690, November 2025.
+
+[27] "STED and Consistency Scoring for Structured Output." arXiv:2512.23712, November 2025.
+
+### Prior Benchmarks
+
+[28] NESTFUL: Nested Function Call Evaluation. EMNLP 2025.
+
+[29] JSONSchemaBench: Constrained Decoding Benchmark. ICLR 2025.
