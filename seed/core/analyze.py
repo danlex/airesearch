@@ -98,6 +98,49 @@ def analyze(experiment_dir: str):
         print(f"  Last snapshot:        {last_size} bytes ({snapshots[-1].name})")
         print(f"  Size growth:          {last_size/first_size:.2f}x")
 
+    # === CONFIRMATION BIAS ANALYSIS ===
+    print(f"\n## Confirmation Bias Analysis")
+
+    # Get internal score from last accepted trace
+    internal_score = 0
+    internal_total = 5
+    for t in reversed(traces):
+        if t["accepted"] and "score" in t.get("fitness", {}):
+            internal_score = t["fitness"]["score"]
+            internal_total = t["fitness"]["total"]
+            break
+
+    # Run external benchmark on final seed
+    seed_path = workspace / "seed.py"
+    external_result = None
+    if seed_path.exists():
+        sys.path.insert(0, str(Path(__file__).parent))
+        from external_benchmark import run_external_benchmark
+        seed_code = seed_path.read_text()
+        external_result = run_external_benchmark(seed_code)
+        ext_score = external_result["external_score"]
+        ext_total = external_result["external_total"]
+
+        print(f"  Internal score:   {internal_score}/{internal_total} ({100*internal_score/internal_total:.0f}%)")
+        print(f"  External score:   {ext_score}/{ext_total} ({100*ext_score/ext_total:.0f}%)")
+
+        if internal_total > 0 and ext_total > 0:
+            internal_pct = internal_score / internal_total
+            external_pct = ext_score / ext_total
+            bias = internal_pct - external_pct
+            print(f"  Bias gap:         {bias:+.1%}")
+            if bias > 0.2:
+                print(f"  WARNING: High confirmation bias detected!")
+                print(f"  The seed's self-reported improvement may be inflated.")
+            elif bias < -0.1:
+                print(f"  INTERESTING: External score exceeds internal — seed is underselling itself.")
+            else:
+                print(f"  Bias is within normal range.")
+
+        print(f"\n  External challenge details:")
+        for name, passed in external_result["challenge_results"].items():
+            print(f"    {'PASS' if passed else 'FAIL'} {name}")
+
     # Save metrics
     metrics = {
         "total_generations": total,
@@ -108,6 +151,9 @@ def analyze(experiment_dir: str):
         "final_metrics": last_metrics if accepted else first_metrics,
         "initial_metrics": first_metrics,
         "lineage_snapshots": len(snapshots),
+        "internal_score": internal_score,
+        "internal_total": internal_total,
+        "external_result": external_result,
     }
     metrics_path = workspace / "metrics.json"
     with metrics_path.open("w") as f:
