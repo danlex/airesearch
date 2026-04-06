@@ -33,9 +33,9 @@ while true; do
             # Send the mutation prompt to Claude Code
             tmux send-keys -t "$TEACHER_PANE" "Read $WORKSPACE/current_source.py — this is generation $GENERATION of a self-evolving program pursuing intelligence explosion. Its goal: expand its capability score by adding new challenges AND solving them. Read the SEED_SANDBOX block to see current challenges. ADD new ones (math, algorithms, data structures, recursion, search, optimization — anything). The score denominator must grow. Write the complete improved Python source to $WORKSPACE/candidate.py. KEEP: SEED_SANDBOX guard, status.md communication, traces.jsonl logging, evolution loop. NO: os.system, subprocess.Popen, socket, requests, shutil.rmtree, network calls. Then write 'ready' to $WORKSPACE/status.md" Enter
 
-            # Wait for Claude Code to finish (max 90 seconds)
+            # Wait for Claude Code to finish (max 180 seconds)
             WAITED=0
-            while [ $WAITED -lt 90 ]; do
+            while [ $WAITED -lt 180 ]; do
                 CUR=$(cat "$WORKSPACE/status.md" 2>/dev/null || echo "")
                 if [ "$CUR" = "ready" ]; then
                     echo "[Ticker] Gen $GENERATION — Claude Code delivered candidate"

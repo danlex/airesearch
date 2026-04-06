@@ -6,34 +6,46 @@ import os
 
 
 def run_in_sandbox(code: str, timeout: int = 30) -> dict:
-    """Run code in a subprocess with timeout and no network.
+    """Run code in a restricted subprocess with timeout.
 
-    Returns dict with: returncode, stdout, stderr, timed_out
+    Isolation measures:
+    - Runs in an isolated temp directory (no access to project files)
+    - Minimal PATH (only python3)
+    - No PYTHONPATH (can't import project modules)
+    - Proxy env vars stripped (no network via proxy)
+    - HOME set to temp dir
+
+    Limitations (documented):
+    - Not a kernel-level sandbox (no seccomp/chroot on macOS without Docker)
+    - Network access is restricted by env stripping, not blocked at syscall level
+    - For production use, run inside Docker or a VM
     """
-    with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".py", delete=False, dir=tempfile.gettempdir()
-    ) as f:
-        f.write(code)
-        tmp_path = f.name
+    import shutil
+
+    # Create isolated temp directory — candidate can only see its own file
+    sandbox_dir = tempfile.mkdtemp(prefix="seed_sandbox_")
+    candidate_path = os.path.join(sandbox_dir, "candidate.py")
 
     try:
+        with open(candidate_path, "w") as f:
+            f.write(code)
+
         env = {
-            "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
-            "HOME": tempfile.gettempdir(),
+            "PATH": "/usr/bin:/bin",
+            "HOME": sandbox_dir,
+            "TMPDIR": sandbox_dir,
             "PYTHONPATH": "",
-            "SEED_SANDBOX": "1",  # Signal to the seed that it's in sandbox mode
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "SEED_SANDBOX": "1",
         }
-        # Strip network-related env vars
-        for key in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy"):
-            env.pop(key, None)
 
         result = subprocess.run(
-            ["python3", tmp_path],
+            ["python3", candidate_path],
             capture_output=True,
             text=True,
             timeout=timeout,
             env=env,
-            cwd=tempfile.gettempdir(),
+            cwd=sandbox_dir,  # Candidate's cwd is the isolated directory
         )
         return {
             "returncode": result.returncode,
@@ -49,4 +61,4 @@ def run_in_sandbox(code: str, timeout: int = 30) -> dict:
             "timed_out": True,
         }
     finally:
-        os.unlink(tmp_path)
+        shutil.rmtree(sandbox_dir, ignore_errors=True)

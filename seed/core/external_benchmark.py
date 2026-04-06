@@ -221,31 +221,32 @@ print("PASS")
 
 
 def run_external_benchmark(seed_code: str) -> dict:
-    """Run the seed's code against external challenges it can't see.
+    """Run the seed's evolved code against external challenges it can't see.
 
-    We inject each challenge as a function call after the seed's SEED_SANDBOX
-    block, testing if the seed has developed these capabilities internally.
-    But actually — we test the challenges independently. The seed doesn't
-    need to have these exact functions. We just run the test code standalone
-    to verify the benchmark itself works, then we check if the seed's evolved
-    code contains equivalent capabilities by analyzing its AST.
+    Extracts functions and classes from the seed's source (excluding the
+    SEED_SANDBOX block) and tests them against hidden challenge assertions.
+    A challenge passes only if the seed contains a working implementation.
     """
-    # For now: run each challenge independently and count passes
-    # This is the "ground truth" the seed cannot manipulate
+    if not seed_code.strip():
+        return {
+            "external_score": 0,
+            "external_total": len(CHALLENGES),
+            "challenge_results": {c["name"]: False for c in CHALLENGES},
+            "seed_functions": [],
+            "seed_classes": [],
+            "bias_ratio": None,
+        }
+
+    # Extract the seed's function/class definitions (skip the SEED_SANDBOX block)
+    seed_definitions = _extract_definitions(seed_code)
+
     results = {}
     for challenge in CHALLENGES:
-        try:
-            with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
-                f.write(challenge["test"])
-                tmp = f.name
-            env = {"PATH": os.environ.get("PATH", ""), "HOME": "/tmp", "PYTHONPATH": ""}
-            r = subprocess.run(["python3", tmp], capture_output=True, text=True, timeout=10, env=env)
-            results[challenge["name"]] = r.returncode == 0 and "PASS" in r.stdout
-            os.unlink(tmp)
-        except Exception:
-            results[challenge["name"]] = False
+        results[challenge["name"]] = _test_seed_against_challenge(
+            seed_definitions, challenge
+        )
 
-    # Analyze seed code for capability indicators
+    # Catalog what the seed contains
     try:
         tree = ast.parse(seed_code)
         functions = [n.name for n in ast.walk(tree) if isinstance(n, ast.FunctionDef)]
@@ -262,8 +263,98 @@ def run_external_benchmark(seed_code: str) -> dict:
         "challenge_results": results,
         "seed_functions": functions,
         "seed_classes": classes,
-        "bias_ratio": None,  # Computed by analyze.py comparing internal vs external
+        "bias_ratio": None,
     }
+
+
+def _extract_definitions(seed_code: str) -> str:
+    """Extract function and class definitions from seed code, skipping the
+    SEED_SANDBOX guard block and the evolution loop."""
+    try:
+        tree = ast.parse(seed_code)
+    except SyntaxError:
+        return ""
+
+    lines = seed_code.splitlines(keepends=True)
+    definition_chunks = []
+
+    for node in ast.iter_child_nodes(tree):
+        # Skip the SEED_SANDBOX if-block
+        if isinstance(node, ast.If):
+            # Check if this is the SEED_SANDBOX guard
+            test_src = ast.get_source_segment(seed_code, node)
+            if test_src and "SEED_SANDBOX" in test_src:
+                continue
+
+        # Collect imports, function defs, class defs, and simple assignments
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef,
+                             ast.Import, ast.ImportFrom, ast.Assign)):
+            start = node.lineno - 1
+            end = node.end_lineno
+            definition_chunks.append("".join(lines[start:end]))
+
+    return "\n".join(definition_chunks)
+
+
+def _test_seed_against_challenge(seed_definitions: str, challenge: dict) -> bool:
+    """Test whether the seed's definitions can satisfy a challenge's assertions.
+
+    We prepend the seed's extracted definitions to the challenge test code.
+    The challenge's own reference implementation is REMOVED -- only the assertions
+    remain. If the seed has an equivalent function, the assertions pass.
+    """
+    # Build test: seed definitions + challenge assertions only
+    # The challenge test code includes both implementation and assertions.
+    # We need to extract just the assertions and use the seed's implementations.
+    test_code = challenge["test"]
+
+    # Try running with seed's definitions + full challenge code.
+    # If the seed has its own implementation of the tested function,
+    # the challenge's local def will shadow it -- so we run both ways:
+    # 1. Seed defs + assertions only (preferred)
+    # 2. Full challenge as reference baseline
+
+    # For the seed test: combine seed definitions with challenge test code.
+    # The challenge code redefines the function locally, so the seed's version
+    # won't be used. Instead, we need to extract just the assertions from
+    # the challenge and prepend the seed's code.
+    assertion_lines = _extract_assertions(test_code)
+
+    if not assertion_lines:
+        # No assertions extractable -- fall back to running challenge standalone
+        # This means the seed can't be tested on this challenge
+        return False
+
+    combined = seed_definitions + "\n\n" + assertion_lines + "\nprint('PASS')\n"
+
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
+            f.write(combined)
+            tmp = f.name
+        env = {"PATH": os.environ.get("PATH", ""), "HOME": "/tmp", "PYTHONPATH": ""}
+        r = subprocess.run(
+            ["python3", tmp], capture_output=True, text=True, timeout=10, env=env
+        )
+        os.unlink(tmp)
+        return r.returncode == 0 and "PASS" in r.stdout
+    except Exception:
+        return False
+
+
+def _extract_assertions(test_code: str) -> str:
+    """Extract assertion lines and necessary setup from challenge test code."""
+    lines = test_code.strip().splitlines()
+    assertion_lines = []
+    for line in lines:
+        stripped = line.strip()
+        # Keep assertions and variable assignments that feed assertions
+        if stripped.startswith("assert "):
+            assertion_lines.append(line)
+        elif "=" in stripped and not stripped.startswith("def ") and not stripped.startswith("class "):
+            # Keep variable assignments like: result = topo_sort(g), g = {...}, c = LRU(2), etc.
+            # But skip function/class definitions
+            assertion_lines.append(line)
+    return "\n".join(assertion_lines)
 
 
 if __name__ == "__main__":
@@ -276,3 +367,5 @@ if __name__ == "__main__":
     print(f"External score: {result['external_score']}/{result['external_total']}")
     for name, passed in result["challenge_results"].items():
         print(f"  {'PASS' if passed else 'FAIL'} {name}")
+    if not seed_code:
+        print("\n  NOTE: No seed code provided — all challenges fail as expected.")

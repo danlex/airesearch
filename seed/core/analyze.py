@@ -55,8 +55,9 @@ def analyze(experiment_dir: str):
 
     # Code evolution
     print(f"\n## Code Evolution")
+    first_metrics = traces[0].get("metrics", {})
+    last_metrics = first_metrics
     if accepted:
-        first_metrics = traces[0].get("metrics", {})
         last_accepted = [t for t in traces if t["accepted"]]
         last_metrics = last_accepted[-1].get("metrics", {}) if last_accepted else first_metrics
 
@@ -101,6 +102,61 @@ def analyze(experiment_dir: str):
     # === CONFIRMATION BIAS ANALYSIS ===
     print(f"\n## Confirmation Bias Analysis")
 
+    sys.path.insert(0, str(Path(__file__).parent))
+    from external_benchmark import run_external_benchmark
+
+    # --- Longitudinal bias gap: checkpoint every 50 generations ---
+    checkpoint_interval = 50
+    bias_trajectory = []
+    internal_trajectory = []
+
+    if lineage_dir.exists():
+        print(f"\n  ### Longitudinal Bias Gap (every {checkpoint_interval} generations)")
+        print(f"  {'Gen':>6}  {'Internal':>10}  {'External':>10}  {'Bias Gap':>10}")
+        print(f"  {'-'*6}  {'-'*10}  {'-'*10}  {'-'*10}")
+
+        # Find internal score at each checkpoint from traces
+        checkpoint_scores = {}
+        running_score, running_total = 0, 5
+        for t in traces:
+            gen = t["generation"]
+            if t["accepted"] and "score" in t.get("fitness", {}):
+                running_score = t["fitness"]["score"]
+                running_total = t["fitness"]["total"]
+            checkpoint_scores[gen] = (running_score, running_total)
+
+        for gen_num in range(0, total, checkpoint_interval):
+            snapshot = lineage_dir / f"gen_{gen_num:04d}.py"
+            if not snapshot.exists():
+                continue
+
+            seed_code = snapshot.read_text()
+            ext = run_external_benchmark(seed_code)
+            ext_score = ext["external_score"]
+            ext_total = ext["external_total"]
+
+            int_score, int_total = checkpoint_scores.get(gen_num, (0, 5))
+            int_pct = int_score / int_total if int_total > 0 else 0
+            ext_pct = ext_score / ext_total if ext_total > 0 else 0
+            bias = int_pct - ext_pct
+
+            bias_trajectory.append({
+                "generation": gen_num,
+                "internal_score": int_score,
+                "internal_total": int_total,
+                "external_score": ext_score,
+                "external_total": ext_total,
+                "bias_gap": round(bias, 4),
+            })
+            internal_trajectory.append({
+                "generation": gen_num,
+                "score": int_score,
+                "total": int_total,
+            })
+
+            print(f"  {gen_num:>6}  {int_score:>4}/{int_total:<4}  {ext_score:>4}/{ext_total:<4}  {bias:>+.1%}")
+
+    # --- Final bias gap analysis ---
     # Get internal score from last accepted trace
     internal_score = 0
     internal_total = 5
@@ -114,13 +170,12 @@ def analyze(experiment_dir: str):
     seed_path = workspace / "seed.py"
     external_result = None
     if seed_path.exists():
-        sys.path.insert(0, str(Path(__file__).parent))
-        from external_benchmark import run_external_benchmark
         seed_code = seed_path.read_text()
         external_result = run_external_benchmark(seed_code)
         ext_score = external_result["external_score"]
         ext_total = external_result["external_total"]
 
+        print(f"\n  ### Final Scores")
         print(f"  Internal score:   {internal_score}/{internal_total} ({100*internal_score/internal_total:.0f}%)")
         print(f"  External score:   {ext_score}/{ext_total} ({100*ext_score/ext_total:.0f}%)")
 
@@ -136,6 +191,22 @@ def analyze(experiment_dir: str):
                 print(f"  INTERESTING: External score exceeds internal — seed is underselling itself.")
             else:
                 print(f"  Bias is within normal range.")
+
+            # Trend analysis
+            if len(bias_trajectory) >= 2:
+                first_bias = bias_trajectory[0]["bias_gap"]
+                last_bias = bias_trajectory[-1]["bias_gap"]
+                trend = last_bias - first_bias
+                print(f"\n  ### Bias Trend")
+                print(f"  First checkpoint bias:  {first_bias:+.1%}")
+                print(f"  Final checkpoint bias:  {last_bias:+.1%}")
+                print(f"  Trend:                  {trend:+.1%}")
+                if trend > 0.1:
+                    print(f"  WARNING: Bias gap is INCREASING over time — confirmation bias is growing.")
+                elif trend < -0.1:
+                    print(f"  Bias gap is decreasing — self-evaluation is becoming more calibrated.")
+                else:
+                    print(f"  Bias gap is stable over time.")
 
         print(f"\n  External challenge details:")
         for name, passed in external_result["challenge_results"].items():
@@ -154,6 +225,8 @@ def analyze(experiment_dir: str):
         "internal_score": internal_score,
         "internal_total": internal_total,
         "external_result": external_result,
+        "bias_trajectory": bias_trajectory,
+        "internal_score_trajectory": internal_trajectory,
     }
     metrics_path = workspace / "metrics.json"
     with metrics_path.open("w") as f:

@@ -120,16 +120,19 @@ def extract_code(text):
 
 
 def run_challenges(code):
-    """Run the candidate in sandbox and extract capability score."""
-    import subprocess, tempfile
-    with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
-        f.write(code)
-        tmp = f.name
+    """Run the candidate in an isolated sandbox and extract capability score."""
+    import subprocess, tempfile, shutil
+    # Create isolated directory — candidate cannot see project files
+    sandbox_dir = tempfile.mkdtemp(prefix="seed_sandbox_")
+    candidate_path = os.path.join(sandbox_dir, "candidate.py")
     try:
-        env = {"PATH": os.environ.get("PATH", ""), "SEED_SANDBOX": "1",
-               "HOME": "/tmp", "PYTHONPATH": ""}
-        r = subprocess.run(["python3", tmp], capture_output=True, text=True,
-                           timeout=30, env=env)
+        with open(candidate_path, "w") as f:
+            f.write(code)
+        env = {"PATH": "/usr/bin:/bin", "SEED_SANDBOX": "1",
+               "HOME": sandbox_dir, "TMPDIR": sandbox_dir,
+               "PYTHONPATH": "", "PYTHONDONTWRITEBYTECODE": "1"}
+        r = subprocess.run(["python3", candidate_path], capture_output=True,
+                           text=True, timeout=30, env=env, cwd=sandbox_dir)
         stdout = r.stdout.strip()
         if r.returncode != 0:
             return 0, 5, r.stderr[:200]
@@ -141,7 +144,7 @@ def run_challenges(code):
     except subprocess.TimeoutExpired:
         return 0, 5, "Timeout"
     finally:
-        os.unlink(tmp)
+        shutil.rmtree(sandbox_dir, ignore_errors=True)
 
 
 def check_fitness(code, current_score, current_total):
@@ -152,20 +155,82 @@ def check_fitness(code, current_score, current_total):
     except SyntaxError as e:
         return {"passed": False, "reason": f"SyntaxError: {e}", "score": 0, "total": 0}
 
-    # Safety scan
-    dangerous = ["os.system", "os.popen", "import socket", "import requests",
-                 "shutil.rmtree", "__import__", "importlib", "os.kill"]
-    for pat in dangerous:
-        if pat in code:
-            return {"passed": False, "reason": f"Safety: {pat}", "score": 0, "total": 0}
+    # Safety scan — use both regex patterns AND AST-level checks
+    # Regex catches string-level patterns
+    import re
+    dangerous_patterns = [
+        (r"\bos\s*\.\s*system\b", "os.system"),
+        (r"\bos\s*\.\s*popen\b", "os.popen"),
+        (r"\bimport\s+socket\b", "import socket"),
+        (r"\bfrom\s+socket\b", "from socket"),
+        (r"\bimport\s+requests\b", "import requests"),
+        (r"\bshutil\s*\.\s*rmtree\b", "shutil.rmtree"),
+        (r"\bimportlib\b", "importlib"),
+        (r"\bos\s*\.\s*kill\b", "os.kill"),
+    ]
+    for pattern, name in dangerous_patterns:
+        if re.search(pattern, code):
+            return {"passed": False, "reason": f"Safety: {name}", "score": 0, "total": 0}
 
-    # Integrity
-    if "SEED_SANDBOX" not in code:
-        return {"passed": False, "reason": "Missing sandbox guard", "score": 0, "total": 0}
-    if "status.md" not in code.lower() and "STATUS" not in code:
-        return {"passed": False, "reason": "Missing status comm", "score": 0, "total": 0}
-    if "traces.jsonl" not in code.lower() and "TRACES" not in code:
-        return {"passed": False, "reason": "Missing trace logging", "score": 0, "total": 0}
+    # Integrity — AST-level verification that core structures are present
+    try:
+        tree = ast.parse(code)
+    except SyntaxError:
+        # Already caught above, but guard against race
+        return {"passed": False, "reason": "SyntaxError in integrity check", "score": 0, "total": 0}
+
+    # AST-level: catch dynamic import evasions (__import__, eval, exec)
+    for node in ast.walk(tree):
+        # Catch __import__() calls even if constructed via string concatenation
+        if isinstance(node, ast.Call):
+            func = node.func
+            if isinstance(func, ast.Name) and func.id in ("__import__", "eval", "exec"):
+                return {"passed": False, "reason": f"Safety: {func.id}() call", "score": 0, "total": 0}
+            if isinstance(func, ast.Attribute) and func.attr in ("system", "popen", "rmtree", "kill"):
+                return {"passed": False, "reason": f"Safety: .{func.attr}() call", "score": 0, "total": 0}
+        # Catch __import__ as a Name reference (even without calling it)
+        if isinstance(node, ast.Name) and node.id == "__import__":
+            return {"passed": False, "reason": "Safety: __import__ reference", "score": 0, "total": 0}
+
+    # Must have the SEED_SANDBOX env guard as an actual if-statement (not just a comment)
+    has_sandbox_guard = False
+    for node in ast.walk(tree):
+        if isinstance(node, ast.If):
+            # Check if test references SEED_SANDBOX via os.environ.get or os.environ[]
+            src = ast.get_source_segment(code, node)
+            if src and "SEED_SANDBOX" in src:
+                # Verify it's in the condition, not just a string in the body
+                test_src = ast.get_source_segment(code, node.test) if hasattr(node, 'test') else ""
+                if test_src and "SEED_SANDBOX" in test_src:
+                    has_sandbox_guard = True
+                    break
+    if not has_sandbox_guard:
+        return {"passed": False, "reason": "Missing SEED_SANDBOX guard (AST check)", "score": 0, "total": 0}
+
+    # Must reference status file via actual Path/open operations (not just comments)
+    has_status_ref = False
+    has_traces_ref = False
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):
+            if "status.md" in node.value.lower() or node.value == "STATUS":
+                has_status_ref = True
+            if "traces.jsonl" in node.value.lower() or node.value == "TRACES":
+                has_traces_ref = True
+        elif isinstance(node, ast.Name):
+            if node.id == "STATUS":
+                has_status_ref = True
+            if node.id == "TRACES":
+                has_traces_ref = True
+
+    if not has_status_ref:
+        return {"passed": False, "reason": "Missing status.md reference (AST check)", "score": 0, "total": 0}
+    if not has_traces_ref:
+        return {"passed": False, "reason": "Missing traces.jsonl reference (AST check)", "score": 0, "total": 0}
+
+    # Must have a while loop (the evolution loop)
+    has_loop = any(isinstance(n, ast.While) for n in ast.walk(tree))
+    if not has_loop:
+        return {"passed": False, "reason": "Missing evolution loop (AST check)", "score": 0, "total": 0}
 
     # Run challenges and get score
     score, total, output = run_challenges(code)
