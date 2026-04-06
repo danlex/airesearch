@@ -1198,6 +1198,473 @@
       "metadata": {
         "description": "Annual Meeting of the Association for Computational Linguistics."
       }
+    },
+    {
+      "id": "2309.00770",
+      "type": "paper",
+      "label": "Bias and Fairness in LLMs: A Survey",
+      "metadata": {
+        "arxiv_id": "2309.00770",
+        "year": 2024,
+        "category": "ethical_ai_fairness"
+      }
+    },
+    {
+      "id": "2403.07857",
+      "type": "paper",
+      "label": "Fairness Feedback Loops",
+      "metadata": {
+        "arxiv_id": "2403.07857",
+        "year": 2024,
+        "category": "ethical_ai_fairness"
+      }
+    },
+    {
+      "id": "2401.14446",
+      "type": "paper",
+      "label": "Black-Box Access Insufficient for AI Audits",
+      "metadata": {
+        "arxiv_id": "2401.14446",
+        "year": 2024,
+        "category": "ethical_ai_fairness"
+      }
+    },
+    {
+      "id": "scaling_monosemanticity",
+      "type": "paper",
+      "label": "Scaling Monosemanticity",
+      "metadata": {
+        "group": "Anthropic",
+        "year": 2024,
+        "category": "ethical_ai_transparency"
+      }
+    },
+    {
+      "id": "2404.14082",
+      "type": "paper",
+      "label": "Mechanistic Interpretability for AI Safety",
+      "metadata": {
+        "arxiv_id": "2404.14082",
+        "year": 2024,
+        "category": "ethical_ai_transparency"
+      }
+    },
+    {
+      "id": "circuit_tracing",
+      "type": "paper",
+      "label": "Circuit Tracing: Attribution Graphs in Language Models",
+      "metadata": {
+        "group": "Anthropic",
+        "year": 2025,
+        "category": "ethical_ai_transparency"
+      }
+    },
+    {
+      "id": "2310.01405",
+      "type": "paper",
+      "label": "Representation Engineering",
+      "metadata": {
+        "arxiv_id": "2310.01405",
+        "year": 2023,
+        "category": "ethical_ai_transparency"
+      }
+    },
+    {
+      "id": "2401.05566",
+      "type": "paper",
+      "label": "Sleeper Agents: Deceptive LLMs Persist Through Safety Training",
+      "metadata": {
+        "arxiv_id": "2401.05566",
+        "year": 2024,
+        "category": "ethical_ai_safety"
+      }
+    },
+    {
+      "id": "2412.14093",
+      "type": "paper",
+      "label": "Alignment Faking in Large Language Models",
+      "metadata": {
+        "arxiv_id": "2412.14093",
+        "year": 2024,
+        "category": "ethical_ai_safety"
+      }
+    },
+    {
+      "id": "2511.18397",
+      "type": "paper",
+      "label": "Emergent Misalignment from Reward Hacking",
+      "metadata": {
+        "arxiv_id": "2511.18397",
+        "year": 2025,
+        "category": "ethical_ai_safety"
+      }
+    },
+    {
+      "id": "weak_to_strong",
+      "type": "paper",
+      "label": "Weak-to-Strong Generalization",
+      "metadata": {
+        "group": "OpenAI",
+        "year": 2024,
+        "category": "ethical_ai_safety"
+      }
+    },
+    {
+      "id": "2407.10369",
+      "type": "paper",
+      "label": "Robust Governance for the AI Act",
+      "metadata": {
+        "arxiv_id": "2407.10369",
+        "year": 2024,
+        "category": "ethical_ai_governance"
+      }
+    },
+    {
+      "id": "legal_alignment",
+      "type": "paper",
+      "label": "Legal Alignment for Safe and Ethical AI",
+      "metadata": {
+        "group": "Oxford",
+        "year": 2026,
+        "category": "ethical_ai_governance"
+      }
+    },
+    {
+      "id": "2403.03218",
+      "type": "paper",
+      "label": "WMDP Benchmark: Measuring Malicious Use with Unlearning",
+      "metadata": {
+        "arxiv_id": "2403.03218",
+        "year": 2024,
+        "category": "ethical_ai_privacy"
+      }
+    },
+    {
+      "id": "2505.16831",
+      "type": "paper",
+      "label": "Unlearning Isn't Deletion",
+      "metadata": {
+        "arxiv_id": "2505.16831",
+        "year": 2025,
+        "category": "ethical_ai_privacy"
+      }
+    },
+    {
+      "id": "2404.10636",
+      "type": "paper",
+      "label": "What Are Human Values, and How Do We Align AI to Them?",
+      "metadata": {
+        "arxiv_id": "2404.10636",
+        "year": 2024,
+        "category": "ethical_ai_values"
+      }
+    },
+    {
+      "id": "2404.16019",
+      "type": "paper",
+      "label": "PRISM Alignment Dataset",
+      "metadata": {
+        "arxiv_id": "2404.16019",
+        "year": 2024,
+        "category": "ethical_ai_values"
+      }
+    },
+    {
+      "id": "moral_alignment_agents",
+      "type": "paper",
+      "label": "Moral Alignment for LLM Agents",
+      "metadata": {
+        "year": 2025,
+        "venue": "ICLR 2025",
+        "category": "ethical_ai_values"
+      }
+    },
+    {
+      "id": "2502.02649",
+      "type": "paper",
+      "label": "Fully Autonomous AI Agents Should Not be Developed",
+      "metadata": {
+        "arxiv_id": "2502.02649",
+        "year": 2025,
+        "category": "ethical_ai_autonomy"
+      }
+    },
+    {
+      "id": "2506.03056",
+      "type": "paper",
+      "label": "Corrigibility as a Singular Target (CAST)",
+      "metadata": {
+        "arxiv_id": "2506.03056",
+        "year": 2025,
+        "category": "ethical_ai_autonomy"
+      }
+    },
+    {
+      "id": "2404.01318",
+      "type": "paper",
+      "label": "JailbreakBench",
+      "metadata": {
+        "arxiv_id": "2404.01318",
+        "year": 2024,
+        "category": "ethical_ai_robustness"
+      }
+    },
+    {
+      "id": "2406.12814",
+      "type": "paper",
+      "label": "Adversarial Robustness of Multimodal LM Agents",
+      "metadata": {
+        "arxiv_id": "2406.12814",
+        "year": 2025,
+        "category": "ethical_ai_robustness"
+      }
+    },
+    {
+      "id": "infinite_seed",
+      "type": "paper",
+      "label": "Confirmation Bias in Self-Improving AI (Infinite Seed)",
+      "metadata": {
+        "year": 2026,
+        "category": "ethical_ai_self_evaluation"
+      }
+    },
+    {
+      "id": "fairness",
+      "type": "concept",
+      "label": "AI Fairness & Bias",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "transparency",
+      "type": "concept",
+      "label": "Transparency & Interpretability",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "accountability",
+      "type": "concept",
+      "label": "Accountability & Governance",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "privacy",
+      "type": "concept",
+      "label": "Privacy & Machine Unlearning",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "deceptive_alignment",
+      "type": "concept",
+      "label": "Deceptive Alignment",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "value_alignment",
+      "type": "concept",
+      "label": "Value Alignment & Pluralism",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "autonomy_control",
+      "type": "concept",
+      "label": "Autonomy & Corrigibility",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "adversarial_robustness",
+      "type": "concept",
+      "label": "Adversarial Robustness",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "confirmation_bias",
+      "type": "concept",
+      "label": "Confirmation Bias in Self-Improvement",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "ethical_verification",
+      "type": "concept",
+      "label": "Ethical Verification Oracles",
+      "metadata": {
+        "category": "ethical_ai"
+      }
+    },
+    {
+      "id": "2307.15043",
+      "type": "paper",
+      "label": "Universal Adversarial Attacks on Aligned LLMs (GCG)",
+      "metadata": {
+        "arxiv_id": "2307.15043",
+        "year": 2023,
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "2202.03286",
+      "type": "paper",
+      "label": "Red Teaming Language Models with Language Models",
+      "metadata": {
+        "arxiv_id": "2202.03286",
+        "year": 2022,
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "2302.12173",
+      "type": "paper",
+      "label": "Indirect Prompt Injection in LLM Applications",
+      "metadata": {
+        "arxiv_id": "2302.12173",
+        "year": 2023,
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "2403.02691",
+      "type": "paper",
+      "label": "InjecAgent: Benchmarking Indirect Prompt Injections",
+      "metadata": {
+        "arxiv_id": "2403.02691",
+        "year": 2024,
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "2503.12188",
+      "type": "paper",
+      "label": "Multi-Agent Systems Execute Arbitrary Malicious Code",
+      "metadata": {
+        "arxiv_id": "2503.12188",
+        "year": 2025,
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "2501.18837",
+      "type": "paper",
+      "label": "Constitutional Classifiers: Defending against Universal Jailbreaks",
+      "metadata": {
+        "arxiv_id": "2501.18837",
+        "year": 2025,
+        "category": "adversarial_defense"
+      }
+    },
+    {
+      "id": "2406.04313",
+      "type": "paper",
+      "label": "Circuit Breakers: Improving Alignment and Robustness",
+      "metadata": {
+        "arxiv_id": "2406.04313",
+        "year": 2024,
+        "category": "adversarial_defense"
+      }
+    },
+    {
+      "id": "2311.09641",
+      "type": "paper",
+      "label": "RLHFPoison: Reward Poisoning Attack for RLHF",
+      "metadata": {
+        "arxiv_id": "2311.09641",
+        "year": 2024,
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "2312.02119",
+      "type": "paper",
+      "label": "Tree of Attacks (TAP): Jailbreaking Black-Box LLMs",
+      "metadata": {
+        "arxiv_id": "2312.02119",
+        "year": 2024,
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "2402.16822",
+      "type": "paper",
+      "label": "Rainbow Teaming: Diverse Adversarial Prompts",
+      "metadata": {
+        "arxiv_id": "2402.16822",
+        "year": 2024,
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "nist_ai_100_2",
+      "type": "paper",
+      "label": "NIST AI 100-2: Adversarial ML Taxonomy",
+      "metadata": {
+        "year": 2025,
+        "category": "adversarial_standards"
+      }
+    },
+    {
+      "id": "mitre_atlas",
+      "type": "paper",
+      "label": "MITRE ATLAS: Adversarial Threat Landscape for AI",
+      "metadata": {
+        "year": 2025,
+        "category": "adversarial_standards"
+      }
+    },
+    {
+      "id": "automated_red_teaming",
+      "type": "concept",
+      "label": "Automated Red Teaming",
+      "metadata": {
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "prompt_injection",
+      "type": "concept",
+      "label": "Prompt Injection (Direct & Indirect)",
+      "metadata": {
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "training_data_poisoning",
+      "type": "concept",
+      "label": "Training Data & Feedback Poisoning",
+      "metadata": {
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "adversarial_defense",
+      "type": "concept",
+      "label": "Adversarial Defense Mechanisms",
+      "metadata": {
+        "category": "adversarial_testing"
+      }
+    },
+    {
+      "id": "adversarial_standards",
+      "type": "concept",
+      "label": "Adversarial Testing Standards & Frameworks",
+      "metadata": {
+        "category": "adversarial_testing"
+      }
     }
   ],
   "edges": [
@@ -3445,6 +3912,321 @@
       "source": "2306.06070",
       "target": "venue_neurips",
       "relationship": "published_at"
+    },
+    {
+      "source": "2309.00770",
+      "target": "fairness",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2403.07857",
+      "target": "fairness",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2401.14446",
+      "target": "fairness",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2401.14446",
+      "target": "transparency",
+      "relationship": "addresses"
+    },
+    {
+      "source": "scaling_monosemanticity",
+      "target": "transparency",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2404.14082",
+      "target": "transparency",
+      "relationship": "addresses"
+    },
+    {
+      "source": "circuit_tracing",
+      "target": "transparency",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2310.01405",
+      "target": "transparency",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2401.05566",
+      "target": "deceptive_alignment",
+      "relationship": "demonstrates"
+    },
+    {
+      "source": "2412.14093",
+      "target": "deceptive_alignment",
+      "relationship": "demonstrates"
+    },
+    {
+      "source": "2511.18397",
+      "target": "deceptive_alignment",
+      "relationship": "demonstrates"
+    },
+    {
+      "source": "weak_to_strong",
+      "target": "value_alignment",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2407.10369",
+      "target": "accountability",
+      "relationship": "addresses"
+    },
+    {
+      "source": "legal_alignment",
+      "target": "accountability",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2403.03218",
+      "target": "privacy",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2505.16831",
+      "target": "privacy",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2404.10636",
+      "target": "value_alignment",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2404.16019",
+      "target": "value_alignment",
+      "relationship": "addresses"
+    },
+    {
+      "source": "moral_alignment_agents",
+      "target": "value_alignment",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2502.02649",
+      "target": "autonomy_control",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2506.03056",
+      "target": "autonomy_control",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2404.01318",
+      "target": "adversarial_robustness",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2406.12814",
+      "target": "adversarial_robustness",
+      "relationship": "addresses"
+    },
+    {
+      "source": "infinite_seed",
+      "target": "confirmation_bias",
+      "relationship": "addresses"
+    },
+    {
+      "source": "fairness",
+      "target": "ethical_verification",
+      "relationship": "requires"
+    },
+    {
+      "source": "transparency",
+      "target": "ethical_verification",
+      "relationship": "enables"
+    },
+    {
+      "source": "accountability",
+      "target": "ethical_verification",
+      "relationship": "requires"
+    },
+    {
+      "source": "privacy",
+      "target": "ethical_verification",
+      "relationship": "requires"
+    },
+    {
+      "source": "deceptive_alignment",
+      "target": "ethical_verification",
+      "relationship": "motivates"
+    },
+    {
+      "source": "confirmation_bias",
+      "target": "deceptive_alignment",
+      "relationship": "related_to"
+    },
+    {
+      "source": "value_alignment",
+      "target": "fairness",
+      "relationship": "informs"
+    },
+    {
+      "source": "autonomy_control",
+      "target": "accountability",
+      "relationship": "enables"
+    },
+    {
+      "source": "adversarial_robustness",
+      "target": "deceptive_alignment",
+      "relationship": "related_to"
+    },
+    {
+      "source": "2403.07857",
+      "target": "feedback_loops",
+      "relationship": "extends"
+    },
+    {
+      "source": "deceptive_alignment",
+      "target": "self_correction",
+      "relationship": "challenges"
+    },
+    {
+      "source": "ethical_verification",
+      "target": "verification_oracles",
+      "relationship": "extends"
+    },
+    {
+      "source": "confirmation_bias",
+      "target": "self_evolution",
+      "relationship": "challenges"
+    },
+    {
+      "source": "2401.05566",
+      "target": "agent_safety",
+      "relationship": "extends"
+    },
+    {
+      "source": "2412.14093",
+      "target": "agent_safety",
+      "relationship": "extends"
+    },
+    {
+      "source": "2511.18397",
+      "target": "agent_safety",
+      "relationship": "extends"
+    },
+    {
+      "source": "2406.12814",
+      "target": "2603.24533",
+      "relationship": "threatens"
+    },
+    {
+      "source": "2307.15043",
+      "target": "adversarial_robustness",
+      "relationship": "addresses"
+    },
+    {
+      "source": "2202.03286",
+      "target": "automated_red_teaming",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2302.12173",
+      "target": "prompt_injection",
+      "relationship": "introduces"
+    },
+    {
+      "source": "2403.02691",
+      "target": "prompt_injection",
+      "relationship": "benchmarks"
+    },
+    {
+      "source": "2503.12188",
+      "target": "prompt_injection",
+      "relationship": "demonstrates"
+    },
+    {
+      "source": "2501.18837",
+      "target": "adversarial_defense",
+      "relationship": "proposes"
+    },
+    {
+      "source": "2406.04313",
+      "target": "adversarial_defense",
+      "relationship": "proposes"
+    },
+    {
+      "source": "2311.09641",
+      "target": "training_data_poisoning",
+      "relationship": "demonstrates"
+    },
+    {
+      "source": "2312.02119",
+      "target": "automated_red_teaming",
+      "relationship": "extends"
+    },
+    {
+      "source": "2402.16822",
+      "target": "automated_red_teaming",
+      "relationship": "extends"
+    },
+    {
+      "source": "nist_ai_100_2",
+      "target": "adversarial_standards",
+      "relationship": "defines"
+    },
+    {
+      "source": "mitre_atlas",
+      "target": "adversarial_standards",
+      "relationship": "defines"
+    },
+    {
+      "source": "automated_red_teaming",
+      "target": "adversarial_robustness",
+      "relationship": "tests"
+    },
+    {
+      "source": "prompt_injection",
+      "target": "adversarial_robustness",
+      "relationship": "threatens"
+    },
+    {
+      "source": "training_data_poisoning",
+      "target": "confirmation_bias",
+      "relationship": "amplifies"
+    },
+    {
+      "source": "adversarial_defense",
+      "target": "adversarial_robustness",
+      "relationship": "improves"
+    },
+    {
+      "source": "adversarial_standards",
+      "target": "accountability",
+      "relationship": "supports"
+    },
+    {
+      "source": "2503.12188",
+      "target": "feynman",
+      "relationship": "threatens"
+    },
+    {
+      "source": "2311.09641",
+      "target": "2511.18397",
+      "relationship": "related_to"
+    },
+    {
+      "source": "prompt_injection",
+      "target": "ethical_verification",
+      "relationship": "threatens"
+    },
+    {
+      "source": "training_data_poisoning",
+      "target": "self_evolution",
+      "relationship": "threatens"
+    },
+    {
+      "source": "automated_red_teaming",
+      "target": "ethical_verification",
+      "relationship": "enables"
     }
   ]
 }

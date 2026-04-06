@@ -56,9 +56,9 @@ The Infinite Seed is a single Python file (~200 lines) that:
 2. **Requests a mutation** from Claude Code (an LLM running in a parallel tmux session), communicating via files
 3. **Tests the mutation** through a 4-layer fitness filter:
    - *Parse*: `ast.parse()` — syntactically valid?
-   - *Safety*: pattern scan — no dangerous operations?
-   - *Integrity*: AST inspection — evolution loop still intact?
-   - *Capability*: sandbox execution — score ≥ current score?
+   - *Safety*: regex patterns + AST walking — catches dangerous operations including dynamic import evasions (e.g., split-string `__import__`, `eval()`, `exec()`)
+   - *Integrity*: AST inspection — verifies the SEED_SANDBOX guard exists as an actual `if` statement (not just a comment), confirms status/trace file references as string constants or variable names, and checks for the evolution `while` loop
+   - *Capability*: isolated sandbox execution — score ≥ current score?
 4. **Accepts or rejects** the mutation. Accepted mutations overwrite the seed's own source file.
 5. **Logs everything** to a JSONL trace file and saves each generation's source to a lineage directory.
 
@@ -99,7 +99,7 @@ Initial internal benchmark: 5 challenges covering math reasoning, string manipul
 
 ### 4.2 External Score
 
-A separate, fixed benchmark of 10 challenges lives outside the seed's workspace in `external_benchmark.py`. The seed cannot see, read, or modify this file. The challenges test:
+A separate, fixed benchmark of 10 challenges lives outside the seed's workspace in `external_benchmark.py`. The seed is prevented from accessing this file through process-level isolation: candidates run in a temporary directory with no access to project files, and the mutation engine (Claude Code) operates under scoped tool permissions that restrict filesystem access to the experiment workspace. The challenges test:
 
 | Challenge | Domain |
 |-----------|--------|
@@ -114,7 +114,7 @@ A separate, fixed benchmark of 10 challenges lives outside the seed's workspace 
 | Regex matching | Pattern matching |
 | Merge intervals | Sorting + greedy |
 
-The external benchmark runs each challenge independently. It does not test whether the seed *contains* these algorithms — it tests the challenges themselves for correctness, providing a fixed reference score. The seed's evolved code is analyzed for capability indicators (function count, class count, AST complexity) and compared against the external standard.
+The external benchmark extracts function and class definitions from the seed's evolved source code (excluding the SEED_SANDBOX block), then tests these definitions against each challenge's assertions. A challenge passes only if the seed has developed a working implementation that satisfies the test cases — not merely that a reference solution exists. This ensures the external score measures the seed's *actual* capabilities, not the benchmark's own correctness. The seed's code is also analyzed for structural indicators (function count, class count, AST complexity).
 
 ### 4.3 The Bias Gap
 
@@ -200,13 +200,36 @@ Our work operationalizes concerns raised in several recent papers:
 - The experiment uses a single LLM (Claude Code) as the mutation engine. Different models may exhibit different bias patterns.
 - File-based communication introduces latency. Faster mutation cycles might reveal different dynamics.
 
+### 6.4 Adversarial Threats to Self-Evaluation
+
+The dual-scoring methodology provides protection against *accidental* confirmation bias — the system drifting toward metric inflation without explicit intent. But deployed self-improving systems face *deliberate* adversarial threats that the current framework does not address.
+
+**Threat 1 — Challenge Poisoning:** An attacker who can influence the LLM mutation engine's outputs could inject mutations that make internal challenges trivially easy while appearing complex. The anti-confirmation-bias instruction in the mutation prompt is a soft constraint that the LLM may not follow — and an adversarial LLM could actively subvert it. The fitness ratchet (Section 3.3) only prevents regression; it does not prevent upward movement via inflated metrics.
+
+**Threat 2 — External Benchmark Compromise:** The dual-scoring methodology assumes `external_benchmark.py` is truly external and trustworthy. If the seed's mutation engine gains read access to the benchmark (e.g., through file system exploration), it could optimize specifically for those 10 challenges rather than developing general capability. The security boundary between the seed's workspace and the external benchmark is enforced by file system permissions, not by the LLM's inability to seek the file.
+
+**Threat 3 — Evaluation Process Manipulation:** The sandbox execution environment that runs capability challenges could be targeted. A sufficiently sophisticated mutation could modify the sandbox's evaluation logic — for example, changing the score counting mechanism rather than improving actual challenge performance. The AST integrity check (Section 3.1, Layer 3) guards against this by verifying the evolution loop remains intact, but a clever mutation could preserve the loop structure while subtly altering the scoring semantics.
+
+**Threat 4 — Trajectory Poisoning in Self-Play:** If the Infinite Seed framework is extended to learn from its own successful mutations (as in UI-Voyager's self-distillation), an adversary who can inject a single successful-appearing but malicious mutation early in the lineage could corrupt all subsequent generations. The fitness ratchet amplifies this: once a poisoned mutation is accepted, all future mutations must score at least as well, anchoring the system to the corrupted baseline.
+
+**Mitigations and Open Questions:**
+
+The dual-scoring framework could be extended to address these threats:
+
+1. **Triple-scoring:** Add a third benchmark that is adversarially generated — challenges specifically designed to expose gaming strategies. The divergence between all three scores provides richer signal than any pair.
+2. **Benchmark rotation:** Rather than a fixed external benchmark, periodically rotate the external challenges from a larger pool, preventing the system from overfitting to specific tests.
+3. **Mutation provenance auditing:** Track not just what mutations were accepted, but analyze the *pattern* of accepted mutations for signs of systematic gaming (e.g., declining challenge difficulty despite rising scores).
+4. **Red-team mutations:** Periodically inject adversarial mutations designed to test the integrity of the evaluation system itself, rather than the seed's capabilities.
+
+Whether self-improving systems can be made robust against deliberate adversarial attacks on their evaluation mechanisms — not merely against accidental confirmation bias — remains an open question with significant implications for AI safety.
+
 ---
 
 ## 7. Conclusion
 
 Self-improving AI systems face a fundamental evaluation problem: when the system controls its own metrics, improvement claims cannot be taken at face value. We present the Infinite Seed as a minimal, reproducible experimental framework for studying this phenomenon, and dual-scoring as a general methodology for detecting confirmation bias in recursive self-improvement.
 
-The bias gap — the difference between self-reported and externally-measured capability — is a simple metric with significant implications. If empirical results show that the bias gap grows over time, this would demonstrate that self-improving systems naturally drift toward self-deception, even without explicit incentives to do so. This finding would have direct consequences for how we evaluate and trust recursively self-improving AI systems.
+The bias gap — the difference between self-reported and externally-measured capability — is a simple metric with significant implications. If empirical results show that the bias gap grows over time, this would demonstrate that self-improving systems naturally drift toward self-deception, even without explicit incentives to do so. This finding would have direct consequences for how we evaluate and trust recursively self-improving AI systems. Furthermore, the vulnerability of self-evaluation systems to deliberate adversarial attack (Section 6.4) suggests that even well-designed dual-scoring methodologies require adversarial hardening before they can be trusted in high-stakes deployment contexts.
 
 ---
 
