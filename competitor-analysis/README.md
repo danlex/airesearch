@@ -1,246 +1,190 @@
-# Competitor Website & LinkedIn Analysis — Ocean Enterprise
+# Competitor Scorecard & Positioning Instrument — Ocean Enterprise (OEC)
 
-**Prepared:** 28 July 2026 · **Scope:** 47 competitors across 19 category labels · **Benchmark subject:** Ocean Enterprise (OE)
-
-This analysis takes the `OE_Comparables & Competitors` list and, for each company, reads the marketing
-signal off their **website** (positioning, CTAs, keyword/messaging vocabulary, named clients, blog cadence)
-and their **LinkedIn / company footprint** (followers, headcount, campaign/event activity). It closes with a
-prioritized set of tactics OE can borrow, ranked by ease of implementation.
+**Prepared:** 28 July 2026 · **v2 (decision-ready)** · **Benchmark subject:** Ocean Enterprise (OE)
+**Scope:** 46 distinct competitors today (47 source rows; Fivetran + dbt Labs merged Jun 2026), grouped into **7 macro-categories**, **scored** on a 6-criterion weighted model and **segmented** by strategic relevance.
 
 | File | What's in it |
 |---|---|
-| **`README.md`** (this file) | Executive summary, method, OE baseline, benchmark tables, cross-cutting synthesis, recommendations |
-| **`per_company_teardowns.md`** | Full per-company teardown for all 47 competitors |
-| **`competitor_scorecard.xlsx`** / `.csv` | One-row-per-company scorecard (filterable), plus a Notes/Method tab |
+| **`competitor_scorecard.xlsx`** | The instrument. Tabs: **Scorecard** (scored + segmented + evidence), **OE Benchmark & Gaps**, **Tactic Backlog** (ranked), **Scoring Model** (rubric + weights), **Categories** (macro→sub), **Corrections & Method** |
+| **`README.md`** (this file) | Executive summary, scoring model, OE gap analysis, synthesis, the OEC conclusion, and the corrections log |
+| **`per_company_teardowns.md`** | Full qualitative teardown of every competitor (positioning, CTAs, keywords, clients, blog, LinkedIn, tactic) |
+| `competitor_scorecard.csv` | Flat export of the Scorecard tab |
 
 ---
 
-## 0 · How to read this (method & honesty box)
+## 0 · What changed in v2 (from inventory → decision instrument)
 
-- **47 companies, all covered.** The source sheet contains 47 distinct competitor rows (a 48th row is the title/subtitle
-  banner, not a company). No duplicates. All 47 are analysed here and in the scorecard.
-- **Website fetches were blocked.** The research environment's egress policy returned **HTTP 403 on every
-  competitor domain** (and on OE's own site), so no live page could be read directly. Every finding comes from
-  **indexed search snippets, press coverage, and third-party trackers** (Crunchbase, PitchBook, LinkedIn snippets,
-  GitHub API for OSS stars). Exact on-page CTA button text is therefore *directional* where marked, and anything
-  uncorroborated is flagged **"n/v" (not verifiable via public search)** rather than invented.
-- **LinkedIn numbers are approximate** and dated to their source. **Exact posts-per-month is almost never public** —
-  LinkedIn hides historical cadence behind login. Where a company's cadence could be inferred (release-synced posts,
-  quarterly reports, event spikes) it's described qualitatively; precise monthly counts are not claimed.
-- **Status changes matter.** Several "competitors" are acquired, wound down, or in flux — flagged inline and in §6.
+This version responds to a review that (correctly) found v1 was a strong research inventory but not yet decision-ready. Added:
+
+- **Weighted 6-criterion scoring model** (Relevance, Positioning, Traction, Trust, Community, Tactic-transferability) → a **Composite** and a **Strategic-priority** score per competitor. See the *Scoring Model* tab.
+- **Segment weights** (Direct 1.0 / Technical 0.7 / Messaging 0.5 / Ecosystem 0.3) so **hyperscaler visibility no longer overwhelms strategic relevance** to OEC.
+- **Ocean Enterprise scored on the same criteria**, with a **gap analysis** vs. the direct-competitor average (*OE Benchmark & Gaps* tab).
+- **Metric-level separation** — own (company/product) followers & headcount vs. **parent/owner** followers for context — so a hyperscaler's sub-product isn't compared to a 20-person startup on the same line.
+- **Evidence columns** — primary source (homepage, the canonical audit target), access date, and a **Confidence** rating per row.
+- **Ranked Tactic Backlog** — each borrowable tactic carries **Expected impact / Effort / Fit-for-OEC / Supporting evidence** and a computed priority.
+- **7 macro-categories** replacing the 19 granular labels.
+
+### Factual corrections in this version (three were already stale on the compile date)
+
+1. **Fivetran + dbt Labs — MERGED.** All-stock, announced 13 Oct 2025, **completed 1 Jun 2026**; combined entity positioned as *"Data Infrastructure for Trusted AI Agents"* (Fraser CEO, Handy President). Now **one** competitor row. *(v1 error: listed as two standalones — and misread their CEO-to-CEO merger content as a competitive exchange.)*
+2. **Salesforce + Informatica — COMPLETED 18 Nov 2025** (~$8B, $25/share). Informatica is **no longer an independent public company**; row flags Salesforce as owner.
+3. **IBM + Confluent — COMPLETED 17 Mar 2026** (~$11B, announced Dec 2025). Row now says "completed," consistent with the notes.
+4. **Ocean Protocol ↔ ASI Alliance** — withdrawal 9 Oct 2025 (with litigation) **confirmed correct**.
+5. **Count corrected** — 47 competitor rows in the source (the 48th is the title banner); after the Fivetran+dbt merger, **46 distinct competitors today**.
+
+### Honesty box (unchanged, still important)
+- **Site fetches were blocked** (HTTP 403 egress policy on every domain), so on-page CTA text and blog indexes come from indexed search snippets/press/trackers, not live pages. The *Primary source* column is the audit target.
+- **LinkedIn numbers are approximate & point-in-time** (±~10–15% between trackers). Trust the **bands**, not the digits. `n/v` = not verifiable this pass.
+- **Scores are structured analyst judgement on a published rubric**, not measured data. The weights are exposed in the workbook — change them and the ranking recomputes.
 
 ---
 
 ## 1 · Executive summary — the 8 things that matter
 
-1. **OE is under-indexed on marketing surface area relative to a genuinely strong technical story.** The competitors
-   that punch above their weight (Phala, Sovity, Lifebit, Apheris, Streamr) are *small teams* — OE's gap vs. them is
-   **content and proof discipline, not headcount.** These are copyable this quarter.
+1. **OE's gap is marketing discipline, not headcount.** The competitors that punch above their weight (Phala, Sovity, Lifebit, Apheris, Streamr) are teams OE's size or smaller. The gap is content + proof discipline — copyable this quarter.
 
-2. **Everyone has repositioned around AI in the last 12 months.** "Trusted data / AI-ready / agentic / governance for
-   AI agents" is now table-stakes vocabulary (Alation, Atlan, Collibra, Precisely, Informatica, Snowflake, Confluent,
-   Striim, Oasis, Phala). OE's **compute-to-data → "trustworthy, governed data for AI training & agents"** is the
-   single highest-leverage message to lead with. It's the wedge the whole field has converged on and OE is *natively*
-   built for it.
+2. **The whole field repositioned around "trusted data for AI agents" in the last 12 months** — and it's now consolidating hard around that phrase: **IBM** (Confluent + StreamSets + DataStage), **Salesforce** (Informatica), **Qlik** (Talend), **LiveRamp** (Habu), and the **Fivetran + dbt** merger all pitch the same "data infrastructure for trusted AI." OE's **Compute-to-Data** is *natively* that story and should lead with it.
 
-3. **The strongest CTA pattern is a two-track funnel:** a hard *"Get a demo / Contact"* for enterprise buyers **and** a
-   low-friction self-serve entry (*"Start free," free credits, docs quickstart, an OSS repo*). Product-led players
-   (Phala, iExec, dbt, Fivetran, Flower) run both. OE, as open-source, should make the self-serve/OSS path a
-   first-class CTA, not just a "Docs" link.
+3. **That consolidation is OE's opening.** As the independents get absorbed into suites and walled gardens, an **open, collectively-governed, vendor-neutral** network is the differentiated alternative — the way Databricks weaponizes "open, no lock-in."
 
-4. **"Proof" has moved from logo walls to quantified outcomes and named consortia.** Phala publishes *"300% sales
-   growth / 60% faster drug discovery."* Apheris turns customers into co-branded *networks/consortia* where every new
-   member is a fresh PR moment. OE already has a **collective of named founding members** (Mercedes/Acentrik, deltaDAO,
-   EuProGigant, TVL Tech, Staatsbibliothek Berlin…) — that is a consortium engine sitting largely unused as marketing.
+4. **OE's measured edge is TRUST; its gap is POSITIONING + COMMUNITY.** Scored against the direct-competitor average (§4): OE **leads on Trust (+0.8)** and is slightly ahead on Traction (+0.4), but **trails on Positioning (−1.7)** and **Community (−0.9)**. The recommendations target exactly those two gaps.
 
-5. **The direct-competitor set (EU data-space / sovereignty) wins on standards authority, not spend.** Dawex turned its
-   own framework into a **CEN/CENELEC standard**; Fraunhofer/Advaneo trade on being **"use case #1"** inside IDSA/Gaia-X;
-   OVHcloud headlines a **"Gaia-X label level 3"** badge. OE's Gaia-X/IDS lineage is an asset it should *quantify and
-   badge* the same way.
+5. **Proof has moved from logo walls to quantified outcomes and named consortia** (Phala's "300% sales / 60% faster"; Apheris's co-branded AISB/ADMET networks). OE has arguably the **best raw proof in the set** — Mercedes/Acentrik, EuProGigant, Staatsbibliothek Berlin — presented as a governance roster, not as marketed outcomes.
 
-6. **Signature content formats recur and are cheap to run:** the **annual "State of X" report** (dbt, Precisely, Habu),
-   the **public quarterly transparency/roadmap post** (Streamr, iExec, Secret Network), the **"success stories" page
-   with numbers** (Phala), and **release-synced blogging** (Snowflake Clean Rooms posts a blog with every capability GA).
-   OE runs none of these systematically today.
+6. **The direct set wins on standards authority, not spend** — Dawex turned its framework into a **CEN/CENELEC standard**; Fraunhofer/Advaneo are cited as **"use case #1"** inside IDSA/Gaia-X; OVHcloud badges **"Gaia-X label level 3."** OE's Gaia-X/IDS lineage should be *quantified and badged* the same way.
 
-7. **Naming things is a moat.** "Context layer" (Atlan), "Secret Computing®" (Inpher), "Rosetta Stone" & "Data Shops"
-   (Narrative), "CLAIRE" (Informatica), "no AI token tax" (Pega), "Seeing Without Seeing" (Oblivious). OE has an unnamed,
-   ownable asset in **Compute-to-Data** — it should be trademarked-style branded and repeated relentlessly.
+7. **Naming is a moat** — "context layer" (Atlan), "Secret Computing®" (Inpher), "CLAIRE" (Informatica), "Data Shops" (Narrative). **Compute-to-Data** is an unbranded, ownable asset — brand it and repeat it relentlessly.
 
-8. **Watch the consolidation.** IBM now owns **StreamSets and Confluent** (~$11B, completed Mar 2026), plus DataStage and
-   ODM; LiveRamp owns Habu; Qlik owns Talend; Arcium took Inpher's core tech/team; TripleBlind is uncertain; **Ocean
-   Protocol exited the Fetch.ai/ASI merger in Oct 2025** (with litigation). Half the "field" is being rolled into suites —
-   which is exactly the moment an **independent, open, collectively-governed** alternative can differentiate on neutrality.
+8. **Signature content formats are cheap and recurring** — the annual "State of X" report, the public quarterly transparency/roadmap post, the "success stories" page with numbers, release-synced blogging. OE runs none systematically today.
 
 ---
 
-## 2 · Ocean Enterprise — baseline (what we're benchmarking against)
+## 2 · Ocean Enterprise — baseline
 
 | Dimension | OE today |
 |---|---|
-| **Positioning** | Free, open-source, collectively-governed, compliant **data & AI ecosystem software** for enterprises & public institutions to **securely manage and monetize** proprietary AI/data products. Domain-agnostic. |
-| **Core tech / named asset** | **Compute-to-Data (C2D)** — compute runs where the data lives; only results leave. Roots in Ocean Protocol (web3). |
-| **Governance** | **Ocean Enterprise Collective (OEC)** — independent non-profit; consortium model (comparable to Gaia-X/IDS), not a classic SaaS vendor. |
-| **Proof (members-as-clients)** | FELT Labs (AI), Transport Genie (agri), **Acentrik / Mercedes-Benz** (auto), sunDAO (energy), Brainstem (health), Rocketstar (HR), **EuProGigant** (manufacturing), **Staatsbibliothek Berlin** (public), deltaDAO, Ocean Protocol Foundation, **Triumvirate Labs / TVL Tech** (web3). |
-| **Verticals in use** | Aerospace, agriculture, manufacturing, mobility, smart cities, energy, health, HR, public sector. |
-| **Channels** | Website `oceanenterprise.io`, `docs.oceanenterprise.io`, **Medium** blog (Ocean Enterprise Collective), **X** @ocnenterprise, **LinkedIn** "Ocean Enterprise Collective". |
-| **CTA / funnel** | Primarily "learn / read docs / contact" (`info@oceanenterprise.io`). No prominent free-trial or self-serve conversion path surfaced. |
-| **LinkedIn footprint** | Small / early-stage; follower count not publicly indexed. Posting skews to member-profile spotlights, ~monthly. No evidence of paid campaigns. |
-
-**The one-line gap:** OE has *vendor-grade substance* (real tech, named blue-chip members, a governance story competitors
-would envy) wrapped in *early-stage marketing surface* (no self-serve CTA, no quantified proof page, no signature
-content format, thin/undifferentiated social presence). Almost every recommendation below closes that specific gap.
+| **Positioning** | Free, open-source, collectively-governed **data & AI ecosystem software** to **securely manage & monetize** proprietary AI/data products. Domain-agnostic. |
+| **Core / named asset** | **Compute-to-Data (C2D)** — compute runs where the data lives; only results leave. Roots in Ocean Protocol (web3). |
+| **Governance** | **Ocean Enterprise Collective (OEC)** — independent non-profit; consortium model (à la Gaia-X/IDS), not a classic SaaS vendor. |
+| **Proof (members)** | FELT Labs, Transport Genie, **Acentrik / Mercedes-Benz**, sunDAO, Brainstem, Rocketstar, **EuProGigant**, **Staatsbibliothek Berlin**, deltaDAO, Ocean Protocol Foundation, **Triumvirate Labs / TVL Tech**. |
+| **Channels** | `oceanenterprise.io`, `docs.oceanenterprise.io`, **Medium** blog, **X** @ocnenterprise, **LinkedIn** "Ocean Enterprise Collective". |
+| **Funnel** | "Learn / read docs / contact" only. No prominent self-serve or live-demo path. |
+| **LinkedIn** | Small / early-stage; count not publicly indexed. Member-spotlight posts ~monthly. No paid campaigns evident. |
 
 ---
 
-## 3 · LinkedIn & scale benchmark
+## 3 · Scoring model, segmentation & the ranked field
 
-Approximate; sourced from public search. "rolls to parent" = a hyperscaler sub-product with no dedicated page.
-Use this to set a realistic follower target, **not** to chase the hyperscalers.
+**Criteria & weights** (1–5 each; full rubric in the workbook): Relevance **25%**, Positioning **20%**, Traction **15%**, Trust **15%**, Community **10%**, Tactic-transferability **15%** → **Composite (1–5)**.
+**Strategic priority (0–100)** = Composite ÷ 5 × 100 × **segment weight**.
 
-**Tier A — direct/peer-scale competitors (the realistic benchmark set for OE):**
+**Segments** (so hyperscaler reach doesn't distort strategic relevance):
 
-| Company | LinkedIn followers | Employees | Notes |
-|---|---:|---:|---|
-| Lifebit | ~22,000 | ~124 | Health federated; strong SEO content |
-| Streamr | ~8,400 | ~20 | Quarterly transparency reports |
-| Oasis Protocol | ~6,400 | ~102 | Confidential AI pivot |
-| Narrative.io | ~5,500 | ~33 | Closest data-monetization comparable |
-| Inpher | ~5,400 | ~14–18 | Acquired (Arcium) |
-| Dawex | ~4,300 | n/v | CEN/CENELEC standard |
-| iExec | ~4,300 | ~71 | Public roadmap posts |
-| Apheris | ~3,800 | ~37 | Consortium engine |
-| Duality | ~3,700 | ~42 | DARPA-tied webinars |
-| Flower | ~3,600 | (YC) | 7,058★ GitHub |
-| Sovity | ~1,900 | ~21 | Catena-X accelerator |
-| Sarus | ~1,700 | ~16 | "Privacy layer" |
-| Advaneo | ~1,200 | 2–10 | IDS "use case #1" |
-| Secret Network | ~1,170 | 11–50 | Low for its age |
-| **Ocean Enterprise** | **small / not indexed** | **collective** | **← starting point** |
-
-> **Reading:** OE's realistic near-term target is the **~4–8k follower band** occupied by iExec, Dawex, Apheris,
-> Streamr and Narrative — teams OE's size or smaller. Lifebit (~22k on ~124 people) shows the ceiling that
-> disciplined SEO + high-cadence content can reach. **Follower count tracks content cadence far more than headcount.**
-
-**Tier B — large independents (aspirational, category-authority benchmark):** FICO ~546k · Informatica ~378k ·
-Precisely ~351k · OVHcloud ~294k · dbt ~149k · Fivetran ~153k · Alation ~128k · IONOS ~76k · Collibra ~70k · Atlan ~63k.
-
-**Tier C — hyperscaler sub-products (no dedicated page; ignore for follower benchmarking):** AWS Data Exchange,
-Databricks/Snowflake Marketplace & Clean Rooms, Azure Data Factory, IBM DataStage/ODM, SAP Data Services.
-
----
-
-## 4 · Cross-cutting synthesis (what the field does)
-
-### 4.1 CTAs — the conversion patterns
-- **Two-track funnel is the norm.** Enterprise: *"Get a demo / Book a demo / Request a demo / Contact sales"* (dbt,
-  Fivetran, Alation, Collibra, FICO, Habu, Lifebit). Self-serve: *"Start free / Try for free / free credits / Get
-  instant access"* (dbt, Fivetran, Databricks, Phala, iExec, Striim, DataStage).
-- **OSS/dev-led CTA** for the open-source players: *star on GitHub, join Slack, docs quickstart, CLI generator*
-  (Flower, OpenMined, iExec's "iApp Generator," Oasis "Build on Sapphire").
-- **Tiered CTAs by trust level** (Databricks: "Get instant access" vs. "Request access" vs. "Try for free") — a UX
-  pattern that maps perfectly onto C2D's different data-sensitivity tiers.
-- **OE gap:** OE's funnel is single-track ("contact / read docs"). It is missing both a **prominent self-serve/OSS
-  entry** ("Deploy the connector," "Run the demo," "Star on GitHub") and a **hard demo CTA** for enterprise buyers.
-
-### 4.2 Keyword / messaging clusters
-- **AI-readiness & agents (universal 2026 layer):** "AI-ready data," "trusted data," "agentic," "governance for AI
-  agents," "context layer," "data for GenAI/RAG."
-- **Privacy/crypto cluster:** confidential computing, TEE/GPU-TEE, FHE, SMPC, differential privacy, "compute-to-data,"
-  "work on data you cannot see," "nothing moves."
-- **Sovereignty/EU cluster (OE's home turf):** data sovereignty, Gaia-X, IDS, EDC, sovereign cloud, "by architecture
-  not policy," CEN/CENELEC.
-- **Monetization/marketplace cluster:** data products, data monetization, "Data Shops," live/ready-to-query, no data
-  copies, data exchange.
-- **OE opportunity:** OE is one of very few that can *credibly* stand in **all four clusters at once** (privacy +
-  sovereignty + monetization + AI-readiness). That intersection is its ownable position — but the messaging has to say
-  it explicitly and pick a **lead** ("trustworthy data for AI, without moving it").
-
-### 4.3 Proof / clients
-- The field has moved from **logo walls → (a) quantified outcome stories** (Phala, Fivetran, Moderna/AWS) and
-  **(b) named multi-brand consortia/networks** (Apheris AISB/ADMET, Fraunhofer's Catena-X, Sovity's Mobility Data Space).
-- **Per-customer branded case-study landing pages** (Streamr, Dawex, OVHcloud) beat a wall of grey logos.
-- **OE gap:** OE has arguably the *best raw proof in the set* (Mercedes/Acentrik, a national library, EU manufacturing
-  consortia) but presents members as a governance roster, **not** as marketed case studies with outcomes.
-
-### 4.4 Content cadence & signature formats
-| Format | Who does it | OE today |
+| Segment | Weight | Members (examples) |
 |---|---|---|
-| Annual **"State of X"** report | dbt, Precisely, Habu | ✗ |
-| Public **quarterly transparency / numbered roadmap** | Streamr, iExec, Secret Network | ✗ |
-| **"Success stories" page with numbers** | Phala, Fivetran | ✗ |
-| **Release-synced blog** (post per capability GA) | Snowflake Clean Rooms, Informatica, Pega | partial |
-| **SEO "2026 guide/examples"** evergreen hub | Lifebit, Atlan, IONOS | ✗ |
-| **Flagship annual conference + recorded talks** | dbt (Coalesce), Flower (Summit), Pega (PegaWorld), Atlan (Activate) | ✗ |
-| **Free public courses / education hub** | OpenMined, Confluent | ✗ |
-| **Editorial sub-brand for policy/analyst audience** | OVHcloud ("Trusted Cloud Digest") | ✗ |
+| **Direct competitor** — same job-to-be-done | 1.0 | Dawex, Sovity, Advaneo, Fraunhofer, iExec, Phala, Oasis, Secret, Streamr, Narrative.io, Fetch.ai |
+| **Technical alternative** — similar outcome, different tech | 0.7 | Lifebit, Apheris, Duality, Sarus, Devron, Tune Insight, Oblivious, Inpher, NVIDIA FLARE |
+| **Messaging reference** — learn positioning from | 0.5 | Atlan, IONOS, OVHcloud, OpenMined, Flower, Alation, Collibra, Precisely, Pega, FICO, Striim, Talend, Habu, Fivetran+dbt, Informatica |
+| **Ecosystem platform** — hyperscaler/suite sub-product | 0.3 | AWS Data Exchange, Snowflake Marketplace/Clean Rooms, Databricks Marketplace, Azure Data Factory, IBM DataStage/ODM, SAP Data Services, Confluent, StreamSets |
+
+**Top 10 competitors by strategic priority** (the ones to watch and learn from first — note they're all Direct):
+
+| # | Company | Segment | Composite | Priority |
+|---|---|---|---:|---:|
+| 1 | Phala Network | Direct | 4.2 | 84 |
+| 2 | Dawex | Direct | 4.1 | 83 |
+| 3 | Fraunhofer ISST (IDS) | Direct | 4.1 | 83 |
+| 4 | Sovity | Direct | 4.0 | 80 |
+| 5 | iExec | Direct | 3.9 | 77 |
+| 6 | Oasis Protocol | Direct | 3.6 | 72 |
+| 7 | Narrative.io | Direct | 3.6 | 72 |
+| 8 | Advaneo | Direct | 3.6 | 71 |
+| 9 | Streamr | Direct | 3.4 | 68 |
+| 10 | Fetch.ai (ASI) | Direct | 3.3 | 67 |
+
+> Hyperscaler sub-products (AWS/Snowflake/Databricks/Azure) score high on Composite but fall down the priority list once segment-weighted — which is the point. Full scores for all 46 are in the *Scorecard* tab.
 
 ---
 
-## 5 · Recommendations for Ocean Enterprise — prioritized by ease of implementation
+## 4 · OE benchmark & gap analysis
 
-### 🟢 Quick wins (weeks; low cost, mostly copywriting/content)
-1. **Add a two-track CTA to the homepage.** A hard **"Book a demo / Talk to the Collective"** *and* a self-serve
-   **"Deploy the connector / Run the C2D demo / Star us on GitHub."** This is the single biggest conversion gap.
-   *(Model: dbt, Phala, iExec.)*
-2. **Brand Compute-to-Data as a named, repeated asset** and lead every page with one crisp line —
-   e.g. *"Compute-to-Data: put your data to work for AI without ever moving it."* *(Model: Atlan "context layer,"
-   Inpher "Secret Computing®," Informatica "CLAIRE.")*
-3. **Ship a "Success Stories" page with quantified outcomes** from existing members (Acentrik/Mercedes, EuProGigant,
-   Staatsbibliothek Berlin) — one metric each, not just logos. *(Model: Phala, Fivetran.)*
-4. **Publish a quarterly public "Collective Transparency Report" / numbered roadmap.** Cheap, recurring, trust-building,
-   and perfect for a governance-first open project. *(Model: Streamr, iExec, Secret Network.)*
-5. **Quantify and badge the Gaia-X / IDS credentials** the way OVHcloud badges "Gaia-X label level 3" — turn compliance
-   lineage into a headline claim.
-6. **Sharpen the sovereignty line** à la IONOS: *"European data sovereignty by architecture, not policy."*
-7. **Move the blog cadence to release-synced posting** — a short post with every connector/feature milestone.
-   *(Model: Snowflake Clean Rooms.)*
+OE scored on the four criteria comparable across the benchmark (Relevance and Tactic-transfer are self-referential for the subject), against the **direct-competitor average**:
 
-### 🟡 Medium effort (1–2 quarters; needs a content/marketing owner)
-8. **Turn the Collective into a marketing engine, Apheris-style:** frame member cohorts as named, co-branded
-   **"data networks"** (e.g. a "Manufacturing Data Network," "Public-Sector Data Network"); every new member = a joint
-   press/blog moment, and members co-market. OE's structure makes this nearly free.
-9. **Stand up an SEO explainer hub** targeting the non-branded search OE should own: *"What is compute-to-data?",
-   "What is a data space?", "How to monetize data without moving it," "Gaia-X vs IDS vs EDC — a 2026 guide."*
-   *(Model: Lifebit, Atlan, IONOS "Digital Guide.")*
-10. **Launch a recurring webinar or "office hours" series** tied to a credible external anchor (Gaia-X/IDSA release
-    cycles, or an EU-funded programme) — turns ecosystem work into a content drumbeat. *(Model: Duality/DARPA, IBM ODM's
-    monthly demo.)*
-11. **Publish role-specific landing pages** (for the CDO, the Data Protection Officer, the public-sector data lead) for
-    ABM/SEO by persona. *(Model: Sarus.)*
-12. **Establish a LinkedIn cadence target** — aim for the ~4–8k-follower peer band within 2–3 quarters via consistent
-    posting (member spotlights *plus* thought-leadership *plus* release notes), not member profiles alone.
+| Criterion | Ocean Enterprise | Direct-competitor avg | Gap | Reading |
+|---|:--:|:--:|:--:|---|
+| **Positioning** | 2 | 3.7 | **−1.7** | Strong substance, weak/unnamed surfaced message. Biggest, cheapest gap. |
+| **Traction** | 3 | 2.6 | **+0.4** | Real blue-chip members but early; roughly at par with small direct peers. |
+| **Trust** | 4 | 3.2 | **+0.8** | Gaia-X/IDS lineage + collective governance + national-institution members = genuine strength. |
+| **Community** | 2 | 2.9 | **−0.9** | Small social footprint; OSS + collective under-activated. |
 
-### 🔵 Strategic (multi-quarter; leadership/partnership decisions)
-13. **Pursue standards-body authority** — engage CEN/CENELEC or IDSA/Gaia-X to anchor C2D methodology as a reference,
-    the way Dawex did with "Trusted Data Transaction." Hard to copy once you own it. *(Model: Dawex, Fraunhofer.)*
-14. **Lean into neutrality as consolidation accelerates.** With IBM absorbing Confluent/StreamSets, Qlik+Talend,
-    LiveRamp+Habu, position OE explicitly as the **independent, open, collectively-governed** alternative that won't be
-    rolled into a suite or a walled garden. *(Contrast: Databricks' "open, no lock-in.")*
-15. **Consider a flagship annual event + recorded talks** (even a modest virtual "Ocean Enterprise Data Summit") as an
-    evergreen-content and lead-gen anchor. *(Model: Flower AI Summit, dbt Coalesce.)*
-16. **Publish co-authored technical/academic papers** with member institutions (a national library, EU manufacturing
-    consortia, universities) to build "we defined this" authority pure-commercial rivals can't match. *(Model:
-    Fraunhofer, Tune Insight/EPFL.)*
+**Headline:** OE's edge is **Trust**; its gaps are **Positioning** and **Community**. Close the *message + proof + community* gap and OE leads its direct segment on trust-weighted relevance — because Trust is the one axis its consolidating, walled-garden rivals can't easily claim.
 
 ---
 
-## 6 · Competitive watch-list (status changes to track)
+## 5 · LinkedIn & scale benchmark (realistic target band)
 
-- **Ocean Protocol left the Fetch.ai / ASI Alliance merger (Oct 2025)** amid governance disputes/litigation — a former
-  partner now operating adjacent territory. Highest-relevance item on this list.
-- **IBM consolidation:** now owns **StreamSets** (2024) and **completed its ~$11B acquisition of Confluent on 17 Mar 2026**
-  (announced Dec 2025), alongside DataStage and ODM. IBM is becoming a one-stop real-time-data + integration suite.
-- **Inpher → core tech & team acquired by Arcium** (Nov 2024); winding down. **Habu → LiveRamp.** **Talend → Qlik** (brand sunsetting).
-- **TripleBlind → uncertain** (possible asset divestiture/downsizing) — **verify before citing** in any client-facing deck.
-- **Streamr** flagged resourcing pressure (shifting to grant/VC fundraising) — a peer worth watching.
-- **Phala, Oasis, Secret Network** all mid-pivot toward "confidential AI" — the same wedge OE should claim; move before
-  they fully own it.
+Approximate; own-entity pages only (hyperscaler sub-products excluded — they roll up to a parent). **Set OE's near-term target from the peer band, not the giants.**
+
+| Peer band | Companies | Followers |
+|---|---|---|
+| **OE near-term target (~4–8k)** | iExec, Dawex, Apheris, Narrative, Streamr, Oasis | ~3.6k–8.4k |
+| **Ceiling on a small team (~20k)** | Lifebit (~22k on ~124 people) | shows what disciplined SEO+cadence reaches |
+| **Early-stage (<2k)** | Advaneo, Secret Network, Sarus, Sovity | ~1.2k–1.9k |
+| **Aspirational (category authority)** | OVHcloud ~294k, dbt+Fivetran ~300k(combined), FICO ~546k | not near-term |
+
+> Follower count tracks **content cadence** far more than headcount. Lifebit (~22k / ~124 staff) is the proof.
 
 ---
 
-*Sources: each competitor's public web presence and press coverage, third-party company trackers (Crunchbase,
-PitchBook, LeadIQ, Tracxn), LinkedIn public snippets, and the GitHub API for OSS star counts, gathered via web search
-on 2026-07-28. Direct site fetches were blocked by the environment's egress policy; figures are approximate and flagged
-where unverifiable. See `per_company_teardowns.md` for per-company detail and `competitor_scorecard.xlsx` for the
-filterable dataset.*
+## 6 · Cross-cutting synthesis (what the field does)
+
+- **CTAs — two-track is the norm:** enterprise *"Book a demo / Contact sales"* **plus** self-serve *"Start free / free credits / Star on GitHub / docs quickstart."* OE runs neither prominently. Databricks even tiers CTAs by trust level ("Get instant access" vs "Request access") — a pattern that maps onto C2D's data-sensitivity tiers.
+- **Messaging clusters:** AI-readiness/agents · privacy/crypto (FHE, TEE, DP, C2D) · sovereignty (Gaia-X, IDS, "by architecture not policy") · monetization (data products, Data Shops). **OE is one of the few that can credibly stand in all four at once** — but must pick a lead ("trustworthy, governed data for AI, without moving it").
+- **Proof:** quantified outcome stories + named multi-brand consortia > grey logo walls. Per-customer branded case-study pages (Streamr, Dawex, OVHcloud) win.
+- **Content formats (all cheap, recurring):** annual "State of X" report · public quarterly transparency/roadmap · "success stories with numbers" · release-synced blog · SEO "2026 guide" hub · flagship event + recorded talks · free courses · policy/analyst editorial sub-brand.
+
+---
+
+## 7 · The strongest available position for OEC
+
+> **An open, collectively-governed data & AI network where data stays under the provider's control and approved computation travels to the data.**
+
+The website should make **five elements immediately visible**:
+
+1. **One ownable category phrase** — brand **Compute-to-Data** as the name (à la "context layer" / "Secret Computing").
+2. **Separate journeys** for **builders**, **data providers**, and **enterprise buyers** (distinct CTAs + landing pages).
+3. **A live Compute-to-Data demonstration** on the homepage (the top self-serve conversion lever).
+4. **Quantified deployments & consortium members** — Mercedes/Acentrik, EuProGigant, Staatsbibliothek Berlin, with a metric each.
+5. **Public roadmap, governance report & transparency report** — turning governance-first into a recurring trust asset.
+
+This position leans directly into OE's measured strength (Trust) and closes its measured gap (Positioning), while the consolidation of every rival into a suite makes "open + neutral + collectively governed" more differentiated by the quarter.
+
+---
+
+## 8 · Ranked tactic backlog (top of the list)
+
+Full ranked list with Expected-impact / Effort / Fit / Evidence is in the **Tactic Backlog** tab. The highest-priority, lowest-effort moves:
+
+| Priority | Tactic | Borrowed from |
+|---:|---|---|
+| ⭐⭐⭐ | Brand **Compute-to-Data** as a named, ownable category phrase | Atlan, Inpher, Informatica |
+| ⭐⭐⭐ | **Two-track CTA** — enterprise demo **+** self-serve/OSS entry | dbt+Fivetran, Phala, iExec, Flower |
+| ⭐⭐⭐ | **"Success stories" page with quantified member outcomes** | Phala, Fivetran |
+| ⭐⭐⭐ | **Live Compute-to-Data demo** on the homepage | iExec, Phala |
+| ⭐⭐⭐ | **Lean into neutrality** as consolidation accelerates | Databricks (vs IBM/Salesforce/Qlik roll-ups) |
+| ⭐⭐ | **Name member cohorts as co-branded "data networks"** | Apheris (AISB/ADMET) |
+| ⭐⭐ | **Public quarterly transparency + governance + roadmap** report | Streamr, iExec |
+| ⭐⭐ | **Quantify + badge Gaia-X / IDS** credentials | OVHcloud |
+
+---
+
+## 9 · Competitive watch-list (status changes to track)
+
+- **Ocean Protocol left the Fetch.ai/ASI Alliance (Oct 2025, with litigation)** — a former partner now operating adjacent territory. Highest relevance.
+- **Consolidation wave:** **IBM** now owns Confluent (~$11B, Mar 2026), StreamSets, DataStage, ODM; **Salesforce** owns Informatica (Nov 2025); **Fivetran + dbt Labs** merged (Jun 2026); **Qlik** owns Talend; **LiveRamp** owns Habu; **Arcium** took Inpher's core tech/team. Independents are becoming suite features.
+- **TripleBlind → uncertain** (possible divestiture/downsizing) — **verify before citing** client-facing.
+- **Streamr** flagged resourcing pressure. **Phala, Oasis, Secret Network** all mid-pivot to "confidential AI" — the same wedge OE should claim first.
+
+---
+
+*Sources: each competitor's public web presence and press coverage, third-party trackers (Crunchbase, PitchBook, LeadIQ, Tracxn), LinkedIn public snippets, and the GitHub API for OSS stars, gathered 2026-07-28. Direct fetches were blocked by egress policy; figures approximate and flagged where unverifiable. Scores are analyst judgement on the rubric in the workbook. See `per_company_teardowns.md` for detail and `competitor_scorecard.xlsx` for the scored, filterable instrument.*

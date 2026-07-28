@@ -75,8 +75,11 @@
 
 ## 2 · Cloud Data Platform & Data Marketplace
 
-### dbt Labs
-- **Status:** Standalone, VC-backed; creator of the "analytics engineering" category.
+### dbt Labs  *(now merged with Fivetran)*
+- **Status:** ⚠️ **MERGED with Fivetran** — all-stock merger announced 13 Oct 2025, **completed 1 Jun 2026**, forming a single
+  entity positioned as "Data Infrastructure for Trusted AI Agents" (George Fraser CEO, Tristan Handy co-founder/President).
+  Products run independently short-term. Treat dbt + Fivetran as **one competitor** — the two entries below describe the
+  pre-merger brands, which remain the customer-facing product lines. Creator of the "analytics engineering" category.
 - **Positioning:** "Deliver trusted data with dbt" — quality, governance, collaboration to deliver trusted analytics/AI products. Audience: data/analytics engineers, mid-market→enterprise.
 - **CTAs:** "Get a demo"/"Book a demo," "Start free" (14-day, no CC), "Get questions answered."
 - **Keywords:** analytics engineering, trusted data, data products, governance, software-engineering best practices, semantic layer, AI-ready, community (100k+).
@@ -85,8 +88,10 @@
 - **LinkedIn:** ~149,000 followers; ~870 employees (+36% YoY). Event cadence around **Coalesce** flagship conference (regional satellites).
 - **Borrow:** The annual "State of X" practitioner report as a full-funnel content+PR engine; a flagship branded conference with cheap regional satellite events.
 
-### Fivetran
-- **Status:** Standalone, PE/VC-backed.
+### Fivetran  *(now merged with dbt Labs)*
+- **Status:** ⚠️ **MERGED with dbt Labs** (completed 1 Jun 2026) — see the dbt Labs note above. The combined entity's
+  named customers include OpenAI, Zendesk, Coupa and HubSpot; positioning is "Open Data Infrastructure for AI at scale."
+  (NB: my v1 mistakenly read the Fraser↔Handy "CEO-to-CEO" content as a *competitive* exchange — it was the merger.)
 - **Positioning:** "Know, protect, and scale your data with governed data movement." Audience: data-engineering leaders, mid-market/enterprise.
 - **CTAs:** "Start for free"/"Try for free" (14-day, no CC), "Book a demo," interactive product demo.
 - **Keywords:** governed data movement, automated, AI-ready, data consolidation, reliability, "eliminate DIY/fragile scripts."
@@ -307,8 +312,9 @@
 - **LinkedIn:** No DataStage page (IBM Data/AI showcase ~257,500 followers).
 - **Borrow:** Lean on a large quantifiable installed base ("14,234 verified customers") as a scale/trust signal; a natural-language/chatbot pipeline-building angle as an AI hook on a mature product.
 
-### Informatica
-- **Status:** Public (NYSE: INFA); category leader.
+### Informatica  *(now part of Salesforce)*
+- **Status:** ⚠️ **Acquired by Salesforce** — ~$8B ($25/share), **completed 18 Nov 2025**. No longer an independent public
+  company; Informatica's catalog/integration/governance/MDM now feed Salesforce's "agentic AI" data foundation.
 - **Positioning:** "Where data comes to life" — AI-powered enterprise cloud data management (IDMC) powered by the **CLAIRE** AI engine. Audience: enterprise CDOs.
 - **CTAs:** Push to IDMC / CLAIRE feature pages (exact copy n/v).
 - **Keywords:** AI-powered, IDMC, CLAIRE/CLAIRE GPT, agentic AI, trusted data, metadata, governance, headless data management.
