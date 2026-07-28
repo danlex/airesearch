@@ -427,7 +427,7 @@
 - **Borrow:** A recurring webinar series tied to a credible government R&D program (DARPA) — turns R&D into ongoing content + third-party validation; co-maintaining an OSS crypto library (OpenFHE) for developer trust.
 
 ### Inpher
-- **Status:** **Acquired by Arcium (Nov 5, 2024)**; effectively winding down (headcount ~35 → ~14–18).
+- **Status:** **Core technology & team acquired by Arcium (Nov 5, 2024)** (Inpher's MPC patents to be open-sourced); effectively winding down (headcount ~35 → ~14–18).
 - **Positioning (legacy):** "**Secret Computing**" (trademarked) — SMPC + FHE; analyze/monetize data "while still encrypted." Audience: finserv (fraud/AML), health/pharma.
 - **CTAs:** n/v (largely inactive post-acquisition).
 - **Keywords:** Secret Computing, XOR Secret Computing Engine, SMPC, FHE, federated learning, privacy-enhancing computation.
@@ -477,7 +477,7 @@
 - **Borrow:** Leverage earned media + awards instead of paid campaigns (efficient for a small team); trade on academic (EPFL) pedigree + public-hospital case studies for conservative healthcare buyers.
 
 ### Confluent
-- **Status:** Public (NASDAQ: CFLT). **NB: IBM is acquiring Confluent (~$11B, completing Mar 2026); Confluent also announced ~800 layoffs (25%) Mar 2026.**
+- **Status:** Was public (NASDAQ: CFLT). **IBM completed its ~$11B all-cash acquisition of Confluent on 17 Mar 2026** (announced Dec 2025; $31.00/share). Restructuring/layoffs were reported around the close (~800 roles cited by one aggregator — treat as unconfirmed).
 - **Positioning:** "The World's Data Streaming Platform" — data in motion (Kafka + Flink), increasingly reframed around real-time data for GenAI/agentic ("shift left"). Audience: platform-engineering → AI teams.
 - **CTAs:** "Start Free," "Get Started," "Contact Sales."
 - **Keywords:** data streaming platform, Apache Kafka, Apache Flink, data in motion, event-driven, shift left, AI-ready streaming.

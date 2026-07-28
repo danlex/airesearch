@@ -1,6 +1,6 @@
 # Competitor Website & LinkedIn Analysis — Ocean Enterprise
 
-**Prepared:** 28 July 2026 · **Scope:** 47 competitors across 12 categories · **Benchmark subject:** Ocean Enterprise (OE)
+**Prepared:** 28 July 2026 · **Scope:** 47 competitors across 19 category labels · **Benchmark subject:** Ocean Enterprise (OE)
 
 This analysis takes the `OE_Comparables & Competitors` list and, for each company, reads the marketing
 signal off their **website** (positioning, CTAs, keyword/messaging vocabulary, named clients, blog cadence)
@@ -17,7 +17,8 @@ prioritized set of tactics OE can borrow, ranked by ease of implementation.
 
 ## 0 · How to read this (method & honesty box)
 
-- **48 → 47 companies.** The source sheet lists 47 distinct competitors (one blank/dupe row). All 47 are covered.
+- **47 companies, all covered.** The source sheet contains 47 distinct competitor rows (a 48th row is the title/subtitle
+  banner, not a company). No duplicates. All 47 are analysed here and in the scorecard.
 - **Website fetches were blocked.** The research environment's egress policy returned **HTTP 403 on every
   competitor domain** (and on OE's own site), so no live page could be read directly. Every finding comes from
   **indexed search snippets, press coverage, and third-party trackers** (Crunchbase, PitchBook, LinkedIn snippets,
@@ -66,10 +67,10 @@ prioritized set of tactics OE can borrow, ranked by ease of implementation.
    (Narrative), "CLAIRE" (Informatica), "no AI token tax" (Pega), "Seeing Without Seeing" (Oblivious). OE has an unnamed,
    ownable asset in **Compute-to-Data** — it should be trademarked-style branded and repeated relentlessly.
 
-8. **Watch the consolidation.** IBM now owns **StreamSets, Confluent (~$11B, Mar 2026)**, DataStage and ODM; LiveRamp
-   owns Habu; Qlik owns Talend; Arcium absorbed Inpher; TripleBlind is uncertain; **Ocean Protocol exited the Fetch.ai/ASI
-   merger in Oct 2025.** Half the "field" is being rolled into suites — which is exactly the moment an **independent,
-   open, collectively-governed** alternative can differentiate on neutrality.
+8. **Watch the consolidation.** IBM now owns **StreamSets and Confluent** (~$11B, completed Mar 2026), plus DataStage and
+   ODM; LiveRamp owns Habu; Qlik owns Talend; Arcium took Inpher's core tech/team; TripleBlind is uncertain; **Ocean
+   Protocol exited the Fetch.ai/ASI merger in Oct 2025** (with litigation). Half the "field" is being rolled into suites —
+   which is exactly the moment an **independent, open, collectively-governed** alternative can differentiate on neutrality.
 
 ---
 
@@ -228,9 +229,9 @@ Databricks/Snowflake Marketplace & Clean Rooms, Azure Data Factory, IBM DataStag
 
 - **Ocean Protocol left the Fetch.ai / ASI Alliance merger (Oct 2025)** amid governance disputes/litigation — a former
   partner now operating adjacent territory. Highest-relevance item on this list.
-- **IBM consolidation:** now owns **StreamSets** (2024) and is **acquiring Confluent (~$11B, Mar 2026, +800 layoffs)**,
-  alongside DataStage and ODM. IBM is becoming a one-stop data-integration suite.
-- **Inpher → acquired by Arcium** (Nov 2024); winding down. **Habu → LiveRamp.** **Talend → Qlik** (brand sunsetting).
+- **IBM consolidation:** now owns **StreamSets** (2024) and **completed its ~$11B acquisition of Confluent on 17 Mar 2026**
+  (announced Dec 2025), alongside DataStage and ODM. IBM is becoming a one-stop real-time-data + integration suite.
+- **Inpher → core tech & team acquired by Arcium** (Nov 2024); winding down. **Habu → LiveRamp.** **Talend → Qlik** (brand sunsetting).
 - **TripleBlind → uncertain** (possible asset divestiture/downsizing) — **verify before citing** in any client-facing deck.
 - **Streamr** flagged resourcing pressure (shifting to grant/VC fundraising) — a peer worth watching.
 - **Phala, Oasis, Secret Network** all mid-pivot toward "confidential AI" — the same wedge OE should claim; move before
