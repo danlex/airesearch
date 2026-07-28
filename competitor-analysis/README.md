@@ -102,7 +102,7 @@ Use this to set a realistic follower target, **not** to chase the hyperscalers.
 
 | Company | LinkedIn followers | Employees | Notes |
 |---|---:|---:|---|
-| Lifebit | ~24,800 | ~124 | Health federated; strong SEO content |
+| Lifebit | ~22,000 | ~124 | Health federated; strong SEO content |
 | Streamr | ~8,400 | ~20 | Quarterly transparency reports |
 | Oasis Protocol | ~6,400 | ~102 | Confidential AI pivot |
 | Narrative.io | ~5,500 | ~33 | Closest data-monetization comparable |
@@ -119,7 +119,7 @@ Use this to set a realistic follower target, **not** to chase the hyperscalers.
 | **Ocean Enterprise** | **small / not indexed** | **collective** | **← starting point** |
 
 > **Reading:** OE's realistic near-term target is the **~4–8k follower band** occupied by iExec, Dawex, Apheris,
-> Streamr and Narrative — teams OE's size or smaller. Lifebit (~25k on ~124 people) shows the ceiling that
+> Streamr and Narrative — teams OE's size or smaller. Lifebit (~22k on ~124 people) shows the ceiling that
 > disciplined SEO + high-cadence content can reach. **Follower count tracks content cadence far more than headcount.**
 
 **Tier B — large independents (aspirational, category-authority benchmark):** FICO ~546k · Informatica ~378k ·

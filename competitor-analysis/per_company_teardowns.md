@@ -368,7 +368,7 @@
 - **Keywords:** federated, sovereign AI, TRE, "nothing moves," multi-omic, real-world data, OMOP, "97% untapped data."
 - **Clients:** Genomics England (flagship), NHS / Cambridge University Hospitals, NIHR Cambridge; blog cites Boehringer, Flatiron.
 - **Blog:** High cadence (7+ posts Feb–Jun 2026); SEO "Ultimate Guide," "12 Real Examples," "2026" freshness titles.
-- **LinkedIn:** ~24,838 followers; ~124 employees — largest of the health-focused set.
+- **LinkedIn:** ~22,000 followers (sources range ~22k–25k); ~124 employees — largest of the health-focused set.
 - **Borrow:** High-frequency SEO "guide/examples (2026)" content refreshed yearly; lead with flagship public-sector logos (Genomics England, NHS).
 
 ### Apheris
